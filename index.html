@@ -12,48 +12,47 @@
 </head>
 
 <body>
-  <header class="site-header">
-    <div class="container">
-      <div class="topbar">
-        <a class="brand" href="#top" aria-label="Home">
-          <span class="brand-mark">AS</span>
-        </a>
-
-        <nav class="nav" aria-label="Primary">
-          <a href="#professional">Professional</a>
-          <a href="#personal">Personal</a>
-          <a href="#focus">Focus</a>
-          <a href="#projects">Projects</a>
-          <a href="#contact">Contact</a>
-        </nav>
-      </div>
+  <!-- Top bar (matches screenshot style) -->
+  <nav aria-label="Primary">
+    <div class="logo" aria-label="Home">
+      <span class="mark">AS</span>
+      <span class="name">Aditya Shanghavi</span>
     </div>
-  </header>
+
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#travel">Travel</a>
+      <a href="#projects">Projects</a>
+      <a href="#cv">CV</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
 
   <main id="top">
     <!-- HERO -->
     <section class="hero">
       <div class="container">
-        <h1 class="hero-title">Bridging minds and machines.</h1>
+        <h1 class="hero-title">Designing the Future of Human–AI Collaboration.</h1>
 
         <p class="hero-subtitle">
-          Research Scientist in neuroergonomics, human factors, and physiological sensing.
-          Building human-centered AI systems that work in the real world.
+          I build intelligent systems that enhance human capability across healthcare, safety-critical environments,
+          and immersive technologies.
         </p>
 
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#professional">Professional</a>
+          <a class="btn btn-primary" href="#projects">View Projects</a>
           <a class="btn btn-ghost" href="#contact">Get in touch</a>
         </div>
       </div>
     </section>
 
-    <!-- PROFESSIONAL -->
-    <section id="professional" class="section">
+    <!-- ABOUT -->
+    <section id="about" class="section">
       <div class="container">
-        <h2 class="section-title">Professional</h2>
+        <h2 class="section-title">About</h2>
         <p class="section-lead">
-          I build and evaluate human-centered AI systems using multimodal sensing, experimentation, and rigorous analytics—spanning immersive training, fatigue modeling, and medical technology.
+          I’m a Research Scientist working at the intersection of neuroergonomics, human factors, and machine learning—building
+          human-centered AI systems grounded in measurable human behavior and physiology.
         </p>
 
         <div class="grid-3">
@@ -69,7 +68,7 @@
             <div class="card-letter">A</div>
             <h3>AI & Modeling</h3>
             <p>
-              Interpretable ML pipelines for state prediction and decision support, grounded in real-world data collection.
+              Interpretable ML pipelines for cognitive-state prediction and decision support, built on real-world data.
             </p>
           </article>
 
@@ -77,57 +76,33 @@
             <div class="card-letter">H</div>
             <h3>Human Factors</h3>
             <p>
-              Study design, usability testing, mixed methods, and design translation for regulated and safety-critical systems.
+              Study design, usability testing, and translating insights into requirements for safety-critical systems.
             </p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- PERSONAL -->
-    <section id="personal" class="section section-alt">
+    <!-- TRAVEL -->
+    <section id="travel" class="section section-alt">
       <div class="container">
-        <h2 class="section-title">Personal</h2>
+        <h2 class="section-title">Travel</h2>
         <p class="section-lead">
-          I’m driven by the belief that technology should expand human capability without replacing human agency.
-          I’m most energized by building systems that are measurable, accountable, and deeply aligned with how people actually think and behave.
+          A personal space for moments outside the lab—places, photos, and small stories that shape how I think and create.
         </p>
 
         <div class="grid-2">
           <article class="panel">
-            <h3>What I care about</h3>
+            <h3>Highlights</h3>
             <p>
-              Human-centered AI, trustworthy systems, and tools that respect biology and cognition—especially in high-stakes environments.
+              Add 3–6 favorite destinations with one-line reflections (what you learned, what surprised you, what you’d return for).
             </p>
           </article>
 
           <article class="panel">
-            <h3>How I work</h3>
+            <h3>Photo grid (optional)</h3>
             <p>
-              Build fast, validate early, measure everything. I like clean experiments, strong instrumentation, and shipping usable artifacts.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- FOCUS AREAS -->
-    <section id="focus" class="section">
-      <div class="container">
-        <h2 class="section-title">Research focus areas.</h2>
-
-        <div class="grid-2">
-          <article class="panel">
-            <h3>Human–AI Collaboration</h3>
-            <p>
-              How people calibrate trust, attention, and decision-making when AI participates in the loop.
-            </p>
-          </article>
-
-          <article class="panel">
-            <h3>Physiology in the Wild</h3>
-            <p>
-              Measuring fatigue and cognitive state under operational demand using wearables and context-aware features.
+              You can embed a simple image gallery here later (or link to an album). Keep it minimal and curated.
             </p>
           </article>
         </div>
@@ -135,9 +110,12 @@
     </section>
 
     <!-- PROJECTS -->
-    <section id="projects" class="section section-alt">
+    <section id="projects" class="section">
       <div class="container">
-        <h2 class="section-title">Featured projects.</h2>
+        <h2 class="section-title">Projects</h2>
+        <p class="section-lead">
+          Selected work across AI, XR, physiological sensing, and human-centered system evaluation.
+        </p>
 
         <div class="stack">
           <article class="project">
@@ -167,7 +145,7 @@
             <div class="project-body">
               <h3>Human-Centered Medical Device Development</h3>
               <p>
-                Translating user needs into design requirements and validation plans, aligned with usability engineering and risk-driven development.
+                Translating user needs into design requirements and validation plans aligned with usability engineering and risk-driven development.
               </p>
               <a class="link" href="#" aria-label="View project (MedTech)">View Project →</a>
             </div>
@@ -176,10 +154,30 @@
       </div>
     </section>
 
+    <!-- CV -->
+    <section id="cv" class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">CV</h2>
+        <p class="section-lead">
+          Download or view my CV.
+        </p>
+
+        <div class="contact-row">
+          <!-- Option 1: Link to a PDF in your repo, e.g. /assets/Aditya_Shanghavi_CV.pdf -->
+          <a class="btn btn-primary" href="assets/Aditya_Shanghavi_CV.pdf" target="_blank" rel="noopener noreferrer">
+            View CV (PDF)
+          </a>
+
+          <!-- Option 2: If you want a Google Drive link instead, replace the href above -->
+          <!-- <a class="btn btn-primary" href="YOUR_GOOGLE_DRIVE_CV_LINK" target="_blank" rel="noopener noreferrer">View CV (PDF)</a> -->
+        </div>
+      </div>
+    </section>
+
     <!-- CONTACT -->
     <section id="contact" class="section">
       <div class="container">
-        <h2 class="section-title">Let’s connect.</h2>
+        <h2 class="section-title">Contact</h2>
         <p class="section-lead">
           Interested in collaboration, consulting, or just chatting about human-centered AI and sensing?
         </p>
