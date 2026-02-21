@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fatigue | Publications</title>
+  <link rel="icon" href="Logo.png" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Style+Script&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --color-primary: #e890be;
+      --color-background-main: #172D33;
+      --color-background-secondary: #47304F;
+      --color-text-dark: #FFFFED;
+      --color-text-body: #A294A6;
+      --font-display: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: var(--font-display);
+      background: var(--color-background-main);
+      color: var(--color-text-dark);
+      line-height: 1.6;
+    }
+
+    /* --- NAV --- */
+    nav{
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(23, 45, 51, 0.85);
+      backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 0.5px solid rgba(255,255,255,0.1);
+      padding: 1rem 5%;
+    }
+    .nav-content{
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .logo-link{
+      display:flex;
+      align-items:center;
+      gap: 0.75rem;
+      text-decoration:none;
+      color: var(--color-text-dark);
+      line-height: 1;
+    }
+    .logo-image{ height: 44px; width: auto; }
+    .full-name{
+      font-family: 'Style Script', cursive;
+      font-size: 1.35rem;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+    }
+    .nav-links{
+      list-style:none;
+      display:flex;
+      gap: 1.5rem;
+      align-items:center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .nav-links a{
+      color: var(--color-text-dark);
+      text-decoration:none;
+      font-size: 0.9rem;
+      position: relative;
+      padding: 0.35rem 0;
+    }
+    .nav-links a:hover{ color: var(--color-primary); }
+
+    /* --- PAGE --- */
+    main{
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3.5rem 5% 4rem;
+    }
+    h1{
+      font-size: 3rem;
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+      margin-bottom: 0.75rem;
+    }
+    .subtitle{
+      color: var(--color-text-body);
+      font-size: 1.1rem;
+      max-width: 850px;
+      margin-bottom: 2.5rem;
+    }
+
+    .section-title{
+      font-size: 1.5rem;
+      letter-spacing: -0.5px;
+      margin: 2.25rem 0 1rem;
+    }
+
+    /* --- PUBLICATION LIST --- */
+    .pub-list{
+      display: grid;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .pub-card{
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 16px;
+      padding: 1.25rem 1.25rem;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.35);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .pub-card:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.5);
+    }
+    .pub-title{
+      display: inline-block;
+      color: var(--color-text-dark);
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-decoration: none;
+      line-height: 1.3;
+    }
+    .pub-title:hover{
+      color: var(--color-primary);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    .pub-meta{
+      margin-top: 0.35rem;
+      color: var(--color-text-body);
+      font-size: 0.95rem;
+    }
+    .pub-tags{
+      margin-top: 0.75rem;
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .tag{
+      font-size: 0.85rem;
+      color: var(--color-text-dark);
+      border: 1px solid rgba(232,144,190,0.35);
+      background: rgba(232,144,190,0.08);
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+    }
+
+    footer{
+      border-top: 0.5px solid rgba(255,255,255,0.1);
+      background: var(--color-background-secondary);
+      color: var(--color-text-body);
+      text-align: center;
+      padding: 2.5rem 5%;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px){
+      h1{ font-size: 2.2rem; }
+      main{ padding-top: 2.5rem; }
+      .logo-image{ height: 40px; }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div class="nav-content">
+      <a class="logo-link" href="index.html">
+        <img class="logo-image" src="Logo.png" alt="Logo">
+        <span class="full-name">Aditya Shanghavi</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <h1>VR Interface to Improve Police Training</h1>
+    <h2>Research Scientist | Technical Project Lead</h2>
+    <p class="subtitle">
+      I am leading a multi-million dollar NSF-funded VR-based training initiative for emergency responders, integrating LLM-powered characters and usability testing to enhance training efficiency with emphasis on adaptive feedback and human-centered system design. 
+    </p>
+
+    <h2 class="section-title">Journal Articles</h2>
+    <div class="pub-list">
+
+      <article class="pub-card">
+        <a class="pub-title" href="https://doi.org/10.1038/s41598-024-60286-1" target="_blank" rel="noopener noreferrer">
+          A machine-learning method isolating changes in wrist kinematics that identify age-related changes in arm movement
+        </a>
+        <div class="pub-meta">
+          Shanghavi A., Larranaga D., Patil R., Frazier E.M., Ambike S, Duerstock B.S., Sereno A.B. <em>Scientific Reports</em>. 2024.
+          <span>• DOI: https://doi.org/10.1038/s41598-024-60286-1</span>
+        </div>
+        <div class="pub-tags">
+          <span class="tag">Parkinsons Disease</span>
+          <span class="tag">Tremors</span>
+          <span class="tag">Wearables</span>
+          <span class="tag">Signal Processing</span>
+        </div>
+      </article>
+    </div>
+
+    <h2 class="section-title">Conference Papers</h2>
+    <div class="pub-list">
+
+      <article class="pub-card">
+        <a class="pub-title" href="https://doi.org/10.18060/27791" target="_blank" rel="noopener noreferrer">
+          Parkinson’s Disease Progression: Exploring the Relationship between Motor Performance and Cognitive Function
+        </a>
+        <div class="pub-meta">
+          Sullivan M.E., Shanghavi A.A., Rentley O., Zauber S.E., Sereno A.B. <em>Proceedings of IMPRS</em>. 2023.
+        </div>
+        <div class="pub-tags">
+          <span class="tag">Parkinsons Disease</span>
+          <span class="tag">Motor Assesment</span>
+          <span class="tag">Cognitive Assesment</span>
+        </div>
+      </article>
+
+      <article class="pub-card">
+        <a class="pub-title" href="https://doi.org/10.18060/25842" target="_blank" rel="noopener noreferrer">
+          Detection of Parkinsonian Motor Symptoms Using Non-Invasive Motion Sensing Technology
+        </a>
+        <div class="pub-meta">
+          Sakaleros J., Shamloo F., Shanghavi, A., Sereno A. <em>Proceedings of IMPRS</em>. 2021.
+        </div>
+        <div class="pub-tags">
+          <span class="tag">Parkinsons Disease</span>
+          <span class="tag">Signal Processing</span>
+          <span class="tag">Wearable Sensor</span>
+        </div>
+      </article>
+
+    </div>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Aditya Shanghavi. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>
