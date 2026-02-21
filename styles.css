@@ -61,14 +61,18 @@ nav{
   position: fixed;
   top: 0; left: 0; right: 0;
   height: var(--nav-h);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 40px;
   background: var(--surface-2);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
   z-index: 1000;
+}
+
+/* New: inner layout uses the same centered width as the rest of the site */
+.nav-inner{
+  height: var(--nav-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .logo{
