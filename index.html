@@ -259,10 +259,12 @@
             text-align: center;
         }
         
-/* ===== HERO SECTION ===== */
-
+        /* ===== HERO SECTION ===== */
+        
         #hero {
-            padding: 50px 10% 20px;
+            min-height: auto;              /* Overrides global 100vh */
+            padding: 70px 10% 40px;        /* Tight vertical spacing */
+            display: block;                /* Prevents vertical centering */
         }
         
         #hero .content-wrapper {
@@ -270,22 +272,25 @@
             align-items: center;
             justify-content: space-between;
             gap: 60px;
+            text-align: left;
         }
         
         .hero-text {
             flex: 1;
-            max-width: 600px;
+            max-width: 640px;
         }
         
         #hero h1 {
             font-size: 3rem;
-            margin-bottom: 1rem;
+            margin: 0 0 0.75rem 0;         /* Remove default top margin */
+            line-height: 1.1;
         }
         
-        .subtitle {
+        #hero .subtitle {
             font-size: 1.1rem;
             color: var(--color-text-body);
             line-height: 1.6;
+            margin: 0;                     /* Removes the 3rem bottom gap */
         }
         
         .hero-image img {
@@ -479,6 +484,18 @@
             section {
                 padding: 7rem 5%;
             }
+
+            #hero {
+              padding: 60px 5% 30px;
+            }
+            
+            #hero .content-wrapper {
+              gap: 40px;
+            }
+            
+            .hero-image img {
+              width: 280px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -530,6 +547,24 @@
                 padding: 0.25rem 0;
                 text-align: center;
             }
+
+            #hero {
+              padding: 50px 1.5rem 25px;
+            }
+            
+            #hero .content-wrapper {
+              flex-direction: column;
+              text-align: center;
+            }
+            
+            .hero-text {
+              max-width: 100%;
+            }
+            
+            .hero-image img {
+              width: 220px;
+              margin-top: 24px;
+            }
         }
 
         @media (max-width: 540px) {
@@ -547,6 +582,14 @@
 
             .projects-grid {
                 grid-template-columns: 1fr;
+            }
+
+            #hero {
+              padding: 45px 1.25rem 20px;
+            }
+            
+            .hero-image img {
+              width: 200px;
             }
         }
     </style>
