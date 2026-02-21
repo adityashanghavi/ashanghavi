@@ -1,80 +1,207 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Aditya Shanghavi | Human–AI Systems</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aditya Shanghavi | Human Factors • Neuroergonomics • AI</title>
+  <meta name="description" content="Bridging minds and machines. Research in neuroergonomics, human-centered AI, and sensing." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
+  <header class="site-header">
+    <div class="container">
+      <div class="topbar">
+        <a class="brand" href="#top" aria-label="Home">
+          <span class="brand-mark">AS</span>
+        </a>
 
-<nav>
-  <div class="logo">AS</div>
-  <div class="nav-links">
-    <a href="#research">Research</a>
-    <a href="#projects">Projects</a>
-    <a href="#vision">Vision</a>
-    <a href="#contact">Contact</a>
-  </div>
-</nav>
-
-<section class="hero">
-  <h1>Designing the Future of Human–AI Collaboration.</h1>
-  <p>
-    I build intelligent systems that enhance human capability across healthcare,
-    safety-critical environments, and immersive technologies.
-  </p>
-  <div class="buttons">
-    <a href="#research" class="btn primary">View Research</a>
-    <a href="#vision" class="btn secondary">Explore Vision</a>
-  </div>
-</section>
-
-<section id="research">
-  <h2>Research</h2>
-  <div class="grid">
-    <div class="card">
-      <h3>Human–AI Collaboration</h3>
-      <p>Modeling trust, workload, and adaptation in AI-mediated systems.</p>
+        <nav class="nav" aria-label="Primary">
+          <a href="#professional">Professional</a>
+          <a href="#personal">Personal</a>
+          <a href="#focus">Focus</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
     </div>
-    <div class="card">
-      <h3>Fatigue Modeling</h3>
-      <p>Wearable-driven machine learning for cognitive state prediction.</p>
-    </div>
-    <div class="card">
-      <h3>Immersive Systems</h3>
-      <p>AI-powered VR training with physiological integration.</p>
-    </div>
-    <div class="card">
-      <h3>Medical Technology</h3>
-      <p>Human-centered device innovation grounded in usability science.</p>
-    </div>
-  </div>
-</section>
+  </header>
 
-<section id="projects">
-  <h2>Projects</h2>
-  <p>Selected work across AI, XR, and biomedical systems.</p>
-</section>
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container">
+        <h1 class="hero-title">Bridging minds and machines.</h1>
 
-<section id="vision" class="dark-section">
-  <h2>Vision</h2>
-  <p>
-    Technology should not replace human capability.
-    It should expand it.
-  </p>
-  <p>
-    I am building toward adaptive intelligent systems that respond
-    to real-time human physiology while preserving autonomy.
-  </p>
-</section>
+        <p class="hero-subtitle">
+          Research Scientist in neuroergonomics, human factors, and physiological sensing.
+          Building human-centered AI systems that work in the real world.
+        </p>
 
-<section id="contact">
-  <h2>Contact</h2>
-  <p>Let’s collaborate.</p>
-</section>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#professional">Professional</a>
+          <a class="btn btn-ghost" href="#contact">Get in touch</a>
+        </div>
+      </div>
+    </section>
 
+    <!-- PROFESSIONAL -->
+    <section id="professional" class="section">
+      <div class="container">
+        <h2 class="section-title">Professional</h2>
+        <p class="section-lead">
+          I build and evaluate human-centered AI systems using multimodal sensing, experimentation, and rigorous analytics—spanning immersive training, fatigue modeling, and medical technology.
+        </p>
+
+        <div class="grid-3">
+          <article class="card">
+            <div class="card-letter">N</div>
+            <h3>Neuroergonomics</h3>
+            <p>
+              Quantifying workload, fatigue, attention, and adaptation using fNIRS, ECG/HR, IMUs, and behavioral measures.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-letter">A</div>
+            <h3>AI & Modeling</h3>
+            <p>
+              Interpretable ML pipelines for state prediction and decision support, grounded in real-world data collection.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-letter">H</div>
+            <h3>Human Factors</h3>
+            <p>
+              Study design, usability testing, mixed methods, and design translation for regulated and safety-critical systems.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PERSONAL -->
+    <section id="personal" class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">Personal</h2>
+        <p class="section-lead">
+          I’m driven by the belief that technology should expand human capability without replacing human agency.
+          I’m most energized by building systems that are measurable, accountable, and deeply aligned with how people actually think and behave.
+        </p>
+
+        <div class="grid-2">
+          <article class="panel">
+            <h3>What I care about</h3>
+            <p>
+              Human-centered AI, trustworthy systems, and tools that respect biology and cognition—especially in high-stakes environments.
+            </p>
+          </article>
+
+          <article class="panel">
+            <h3>How I work</h3>
+            <p>
+              Build fast, validate early, measure everything. I like clean experiments, strong instrumentation, and shipping usable artifacts.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOCUS AREAS -->
+    <section id="focus" class="section">
+      <div class="container">
+        <h2 class="section-title">Research focus areas.</h2>
+
+        <div class="grid-2">
+          <article class="panel">
+            <h3>Human–AI Collaboration</h3>
+            <p>
+              How people calibrate trust, attention, and decision-making when AI participates in the loop.
+            </p>
+          </article>
+
+          <article class="panel">
+            <h3>Physiology in the Wild</h3>
+            <p>
+              Measuring fatigue and cognitive state under operational demand using wearables and context-aware features.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">Featured projects.</h2>
+
+        <div class="stack">
+          <article class="project">
+            <div class="project-tag">XR</div>
+            <div class="project-body">
+              <h3>AI-NPC VR Training for Emergency Response</h3>
+              <p>
+                VR training scenarios with LLM-powered characters, usability evaluation, and multimodal sensing to quantify performance and adaptation.
+              </p>
+              <a class="link" href="#" aria-label="View project (XR)">View Project →</a>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-tag">FATIGUE</div>
+            <div class="project-body">
+              <h3>Operational Fatigue Detection in EMS</h3>
+              <p>
+                Longitudinal modeling with wearable and contextual features to predict fatigue and identify robust physiological indicators.
+              </p>
+              <a class="link" href="#" aria-label="View project (Fatigue)">View Project →</a>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-tag">MEDTECH</div>
+            <div class="project-body">
+              <h3>Human-Centered Medical Device Development</h3>
+              <p>
+                Translating user needs into design requirements and validation plans, aligned with usability engineering and risk-driven development.
+              </p>
+              <a class="link" href="#" aria-label="View project (MedTech)">View Project →</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+      <div class="container">
+        <h2 class="section-title">Let’s connect.</h2>
+        <p class="section-lead">
+          Interested in collaboration, consulting, or just chatting about human-centered AI and sensing?
+        </p>
+
+        <div class="contact-row">
+          <a class="btn btn-primary" href="mailto:YOUR_EMAIL@example.com">Email</a>
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/YOUR_LINKEDIN/" target="_blank" rel="noopener noreferrer">
+            LinkedIn
+          </a>
+          <a class="btn btn-ghost" href="https://github.com/YOUR_GITHUB" target="_blank" rel="noopener noreferrer">
+            GitHub
+          </a>
+        </div>
+
+        <footer class="footer">
+          <span>© <span id="year"></span> Aditya Shanghavi.</span>
+          <span class="footer-quote">Human-centered systems. Measurable impact.</span>
+        </footer>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
 </body>
 </html>
