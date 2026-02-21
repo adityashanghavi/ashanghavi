@@ -1,3 +1,6 @@
+/* Prevent 100% width + padding from overflowing */
+* { box-sizing: border-box; }
+
 body {
   margin:0;
   font-family: Inter, sans-serif;
@@ -7,12 +10,17 @@ body {
 }
 
 nav {
-  display:flex;
-  justify-content:space-between;
-  padding:20px 40px;
-  position:fixed;
-  width:100%;
-  background:rgba(10,15,28,0.9);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;               /* instead of width:100% */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: rgba(10,15,28,0.9);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
 }
 
 .logo {
@@ -23,10 +31,15 @@ nav {
   -webkit-text-fill-color:transparent;
 }
 
+.nav-links {
+  display: flex;
+  gap: 22px;
+  flex-wrap: wrap;     /* allows wrapping instead of overflow */
+  justify-content: flex-end;
+}
+
 .nav-links a {
-  margin-left:25px;
-  color:white;
-  text-decoration:none;
+  white-space: nowrap; /* keeps each label intact */
 }
 
 .hero {
