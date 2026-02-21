@@ -605,27 +605,6 @@
             .hero-image img {
               width: 200px;
             }
-/* --- LINKEDIN BUTTON --- */
-            .linkedin-button {
-                display: inline-flex;
-                align-items: center;
-                gap: 0.6rem;
-                padding: 0.9rem 1.6rem;
-                background: #0A66C2;          /* Official LinkedIn Blue */
-                color: white;
-                text-decoration: none;
-                border-radius: 8px;
-                font-weight: 500;
-                font-size: 1rem;
-                transition: all 0.25s ease;
-                box-shadow: 0 6px 20px rgba(10, 102, 194, 0.3);
-            }
-            
-            .linkedin-button:hover {
-                background: #004182;          /* Darker LinkedIn Blue */
-                transform: translateY(-3px);
-                box-shadow: 0 10px 28px rgba(10, 102, 194, 0.4);
-            }
         }
         /* Make hero-text paragraph styling (not the hero layout container) */
         p.hero-text {
@@ -645,6 +624,41 @@
           text-align: center;
           margin: 0.75rem auto 0;
         }
+ /* Shared icon button style */
+        .contact-links a {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.6rem;
+          width: 52px;
+          height: 52px;
+          border-radius: 10px;
+          text-decoration: none;
+          transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+        }
+        
+        /* LinkedIn */
+        .linkedin-button {
+          background: #0A66C2;
+          box-shadow: 0 6px 20px rgba(10, 102, 194, 0.25);
+        }
+        .linkedin-button:hover {
+          background: #004182;
+          transform: translateY(-3px);
+          box-shadow: 0 10px 28px rgba(10, 102, 194, 0.35);
+        }
+        
+        /* Email */
+        .email-button {
+          background: #e890be; /* matches your site accent */
+          box-shadow: 0 6px 20px rgba(232, 144, 190, 0.25);
+        }
+        .email-button:hover {
+          background: #e0609d;
+          transform: translateY(-3px);
+          box-shadow: 0 10px 28px rgba(232, 144, 190, 0.35);
+        }
+        
     </style>
 </head>
 <body>
