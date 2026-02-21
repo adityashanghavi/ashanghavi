@@ -1,29 +1,251 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Under Construction</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <style>
-        body {
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: #172D33;
-            color: #FFFFED;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PhD | Publications</title>
+  <link rel="icon" href="Logo.png" />
 
-        h1 {
-            font-size: 3rem;
-            letter-spacing: -1px;
-        }
-    </style>
+  <link href="https://fonts.googleapis.com/css2?family=Style+Script&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --color-primary: #e890be;
+      --color-background-main: #172D33;
+      --color-background-secondary: #47304F;
+      --color-text-dark: #FFFFED;
+      --color-text-body: #A294A6;
+      --font-display: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: var(--font-display);
+      background: var(--color-background-main);
+      color: var(--color-text-dark);
+      line-height: 1.6;
+    }
+
+    /* --- NAV --- */
+    nav{
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(23, 45, 51, 0.85);
+      backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 0.5px solid rgba(255,255,255,0.1);
+      padding: 1rem 5%;
+    }
+    .nav-content{
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .logo-link{
+      display:flex;
+      align-items:center;
+      gap: 0.75rem;
+      text-decoration:none;
+      color: var(--color-text-dark);
+      line-height: 1;
+    }
+    .logo-image{ height: 44px; width: auto; }
+    .full-name{
+      font-family: 'Style Script', cursive;
+      font-size: 1.35rem;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+    }
+    .nav-links{
+      list-style:none;
+      display:flex;
+      gap: 1.5rem;
+      align-items:center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .nav-links a{
+      color: var(--color-text-dark);
+      text-decoration:none;
+      font-size: 0.9rem;
+      position: relative;
+      padding: 0.35rem 0;
+    }
+    .nav-links a:hover{ color: var(--color-primary); }
+
+    /* --- PAGE --- */
+    main{
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3.5rem 5% 4rem;
+    }
+    h1{
+      font-size: 3rem;
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+      margin-bottom: 0.75rem;
+    }
+    .subtitle{
+      color: var(--color-text-body);
+      font-size: 1.1rem;
+      max-width: 850px;
+      margin-bottom: 2.5rem;
+    }
+
+    .section-title{
+      font-size: 1.5rem;
+      letter-spacing: -0.5px;
+      margin: 2.25rem 0 1rem;
+    }
+
+    /* --- PUBLICATION LIST --- */
+    .pub-list{
+      display: grid;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .pub-card{
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 16px;
+      padding: 1.25rem 1.25rem;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.35);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .pub-card:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.5);
+    }
+    .pub-title{
+      display: inline-block;
+      color: var(--color-text-dark);
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-decoration: none;
+      line-height: 1.3;
+    }
+    .pub-title:hover{
+      color: var(--color-primary);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    .pub-meta{
+      margin-top: 0.35rem;
+      color: var(--color-text-body);
+      font-size: 0.95rem;
+    }
+    .pub-tags{
+      margin-top: 0.75rem;
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .tag{
+      font-size: 0.85rem;
+      color: var(--color-text-dark);
+      border: 1px solid rgba(232,144,190,0.35);
+      background: rgba(232,144,190,0.08);
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+    }
+
+    footer{
+      border-top: 0.5px solid rgba(255,255,255,0.1);
+      background: var(--color-background-secondary);
+      color: var(--color-text-body);
+      text-align: center;
+      padding: 2.5rem 5%;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px){
+      h1{ font-size: 2.2rem; }
+      main{ padding-top: 2.5rem; }
+      .logo-image{ height: 40px; }
+    }
+  </style>
 </head>
+
 <body>
-    <h1>Under Construction</h1>
+  <nav>
+    <div class="nav-content">
+      <a class="logo-link" href="index.html">
+        <img class="logo-image" src="Logo.png" alt="Logo">
+        <span class="full-name">Aditya Shanghavi</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html#research">Work</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <h1>PhD Publications</h1>
+    <p class="subtitle">
+      Selected publications from my PhD and related work. Click a title to view the paper.
+    </p>
+
+    <h2 class="section-title">Journal Articles</h2>
+    <div class="pub-list">
+
+      <!-- Replace these with your real papers -->
+      <article class="pub-card">
+        <a class="pub-title" href="https://doi.org/10.xxxx/xxxxx" target="_blank" rel="noopener noreferrer">
+          Paper Title Goes Here: Wearable Sensing for Parkinson’s Tremor Quantification
+        </a>
+        <div class="pub-meta">
+          Shanghavi A, Coauthor B, Coauthor C. <em>Journal Name</em>. 2024.
+          <span>• DOI: 10.xxxx/xxxxx</span>
+        </div>
+        <div class="pub-tags">
+          <span class="tag">Parkinson’s</span>
+          <span class="tag">Wearables</span>
+          <span class="tag">Signal Processing</span>
+        </div>
+      </article>
+
+      <article class="pub-card">
+        <a class="pub-title" href="https://scholar.google.com/" target="_blank" rel="noopener noreferrer">
+          Another Paper Title: Objective Metrics of Tremor Severity
+        </a>
+        <div class="pub-meta">
+          Shanghavi A, Coauthor D. <em>Scientific Reports</em>. 2023.
+        </div>
+        <div class="pub-tags">
+          <span class="tag">Digital Health</span>
+          <span class="tag">ML</span>
+        </div>
+      </article>
+
+    </div>
+
+    <h2 class="section-title">Conference Papers</h2>
+    <div class="pub-list">
+
+      <article class="pub-card">
+        <a class="pub-title" href="https://doi.org/10.xxxx/xxxxx" target="_blank" rel="noopener noreferrer">
+          Conference Paper Title: Human Factors Evaluation of Sensor-Based Scoring
+        </a>
+        <div class="pub-meta">
+          Shanghavi A, Coauthor E. <em>Conference Name</em>. 2022.
+        </div>
+        <div class="pub-tags">
+          <span class="tag">Human Factors</span>
+          <span class="tag">Clinical Metrics</span>
+        </div>
+      </article>
+
+    </div>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Aditya Shanghavi. All Rights Reserved.</p>
+  </footer>
 </body>
 </html>
