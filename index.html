@@ -1,202 +1,818 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Aditya Shanghavi | Human Factors • Neuroergonomics • AI</title>
-  <meta name="description" content="Bridging minds and machines. Research in neuroergonomics, human-centered AI, and sensing." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AS</title>
+    
+    <link rel="icon" href="Logo.png"> 
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script> 
+    <script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r128/examples/js/loaders/GLTFLoader.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Style+Script&display=swap" rel="stylesheet"> 
+
+    <style>
+        :root {
+            --color-primary: #e890be; 
+            --color-background-main: #172D33; 
+            --color-background-secondary: #47304F; 
+            --color-text-dark: #FFFFED;       
+            --color-text-body: #A294A6;       
+            --color-text-light: #641E4F;       
+            --color-white: #FFFBEB;           
+            --font-display: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-display);
+            line-height: 1.6;
+            color: var(--color-text-dark);
+            background: var(--color-background-main);
+            overflow-x: hidden;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .brain-background {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+            pointer-events: none;
+        }
+        #brain-container {
+            opacity: 0.08; 
+        }
+        .contact-3d-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+        #contact.active .contact-3d-background {
+            opacity: 0.15;
+        }
+        
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(23, 45, 51, 0.85);
+            backdrop-filter: saturate(180%) blur(20px);
+            padding: 1.2rem 5%;
+            z-index: 1000;
+            border-bottom: 0.5px solid rgba(255,255,255,0.1);
+        }
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo-link {
+            display: flex;
+            flex-direction: row; 
+            align-items: center;
+            text-decoration: none;
+            line-height: 1; 
+            gap: 0.75rem;
+        }
+        .logo-image {
+            height: 55px; 
+            width: auto;
+            transition: opacity 0.3s;
+        }
+        .full-name {
+            font-family: 'Style Script', cursive; 
+            font-size: 1.5rem;
+            font-weight: 400; 
+            color: var(--color-text-dark);
+            margin-top: 0;
+            letter-spacing: 0.5px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+            align-items: center;
+        }
+        .nav-links a {
+            color: var(--color-text-dark);
+            text-decoration: none;
+            transition: color 0.3s; 
+            font-size: 0.875rem;
+            font-weight: 400;
+            position: relative;
+            display: block;
+            padding: 0.5rem 0;
+        }
+        
+        .nav-links a:hover,
+        .nav-links a:focus {
+            color: var(--color-primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after,
+        .nav-links a:focus::after {
+            width: 100%;
+        }
+
+        /* Dropdown Menu */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-toggle {
+            cursor: pointer;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(23, 45, 51, 0.95);
+            backdrop-filter: saturate(180%) blur(20px);
+            border: 1px solid rgba(232, 144, 190, 0.2);
+            border-radius: 12px;
+            padding: 0.5rem 0;
+            min-width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+            transform: translateX(-50%) translateY(-10px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            margin-top: 0.5rem;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .dropdown-menu li {
+            list-style: none;
+        }
+
+        .dropdown-menu a {
+            padding: 0.75rem 1.5rem;
+            display: block;
+            white-space: nowrap;
+            transition: background 0.2s ease;
+        }
+
+        .dropdown-menu a::after {
+            display: none;
+        }
+
+        .dropdown-menu a:hover {
+            background: rgba(232, 144, 190, 0.1);
+        }
+        
+        /* --- SECTIONS & TYPOGRAPHY --- */
+        section {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 5%;
+        }
+        .content-wrapper {
+            max-width: 980px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        h1 {
+            font-size: 5rem;
+            font-weight: 600;
+            letter-spacing: -3px;
+            margin-bottom: 1.5rem;
+            color: var(--color-text-dark);
+            line-height: 1.05;
+            animation: fadeInUp 0.8s ease;
+        }
+        h2 {
+            font-size: 3.5rem;
+            font-weight: 600;
+            letter-spacing: -2px;
+            margin-bottom: 2rem;
+            color: var(--color-text-dark);
+            line-height: 1.1;
+        }
+        .subtitle {
+            font-size: 1.75rem;
+            font-weight: 400;
+            color: var(--color-text-body);
+            margin-bottom: 3rem;
+            line-height: 1.4;
+        }
+        .subtitle a {
+            color: var(--color-primary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .subtitle a:hover {
+            color: #e0609d;
+        }
+
+        .hero-text {
+            font-size: 1.25rem;
+            color: var(--color-text-body);
+            line-height: 1.6;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+        
+        /* --- BUTTONS --- */
+        .cta-button {
+            display: inline-block;
+            padding: 0.875rem 2rem;
+            background: var(--color-primary);
+            color: var(--color-background-main);
+            text-decoration: none;
+            border-radius: 980px;
+            font-size: 1.0625rem;
+            font-weight: 400;
+            transition: background 0.3s;
+            letter-spacing: -0.2px;
+        }
+        .cta-button:hover {
+            background: #e0609d;
+        }
+        .secondary-button {
+            display: inline-block;
+            padding: 0.875rem 2rem;
+            background: transparent;
+            color: var(--color-primary);
+            text-decoration: none;
+            border-radius: 980px;
+            font-size: 1.0625rem;
+            font-weight: 400;
+            border: 1px solid var(--color-primary);
+            transition: all 0.3s;
+            margin-left: 1rem;
+            letter-spacing: -0.2px;
+        }
+        .secondary-button:hover {
+            background: var(--color-primary);
+            color: var(--color-background-main);
+        }
+        
+        /* --- CARDS & GRIDS --- */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+            text-align: left;
+        }
+        .feature-card {
+            padding: 2.5rem;
+            background: var(--color-background-main);
+            border-radius: 18px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+        }
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--color-primary);
+        }
+        .feature-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--color-text-dark);
+            letter-spacing: -0.5px;
+        }
+        .feature-card p {
+            font-size: 1rem;
+            color: var(--color-text-body);
+            line-height: 1.5;
+        }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+            text-align: left;
+        }
+        .project-card {
+            background: var(--color-background-main);
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: left;
+        }
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.6);
+        }
+        .project-image {
+            width: 100%;
+            height: 240px;
+            background: linear-gradient(180deg, #641E4F 0%, #172D33 100%); 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--color-text-dark);
+        }
+        .project-content {
+            padding: 2rem;
+        }
+        .project-content h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--color-text-dark);
+            letter-spacing: -0.5px;
+        }
+        .project-content p {
+            color: var(--color-text-body);
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        .project-link {
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 400;
+            transition: opacity 0.3s;
+            font-size: 1rem;
+        }
+        .project-link:hover {
+            opacity: 0.6;
+        }
+        
+        /* --- CONTACT & FOOTER --- */
+        .contact-section {
+            background: var(--color-background-secondary);
+            position: relative;
+            overflow: hidden;
+        }
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+        .contact-link {
+            padding: 0.875rem 2rem;
+            background: var(--color-primary);
+            color: var(--color-background-main); 
+            text-decoration: none;
+            border-radius: 980px;
+            font-size: 1.0625rem;
+            font-weight: 400;
+            transition: background 0.3s;
+            letter-spacing: -0.2px;
+        }
+        .contact-link:hover {
+            background: #e0609d;
+        }
+        footer {
+            background: var(--color-background-secondary);
+            color: var(--color-text-body);
+            text-align: center;
+            padding: 3rem 5%;
+            font-size: 0.875rem;
+            border-top: 0.5px solid rgba(255,255,255,0.1);
+        }
+        @media (max-width: 1100px) {
+            nav {
+                padding: 1rem 1.25rem;
+            }
+
+            .nav-content {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1.25rem;
+            }
+
+            section {
+                padding: 7rem 5%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+                letter-spacing: -1.5px; 
+            }
+            h2 {
+                font-size: 2.5rem;
+                letter-spacing: -1px;
+            }
+            .subtitle {
+                font-size: 1.25rem;
+            }
+            .nav-links {
+                gap: 1.5rem;
+            }
+            .brain-background {
+                width: 500px;
+                height: 500px;
+            }
+            section {
+                padding: 5.5rem 1.5rem;
+            }
+            .secondary-button {
+                margin-left: 0;
+                margin-top: 1rem; 
+            }
+
+            nav {
+                position: sticky;
+            }
+
+            .nav-content {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.5rem 1rem;
+                width: 100%;
+            }
+
+            .nav-links {
+                width: 100%;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.5rem 1rem;
+            }
+
+            .nav-links a {
+                padding: 0.25rem 0;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 540px) {
+            body {
+                font-size: 0.95rem;
+            }
+
+            h1 {
+                font-size: 2.4rem;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
-
 <body>
-  <!-- Top bar (matches screenshot style) -->
-<nav aria-label="Primary">
-  <div class="nav-inner container">
-    <a class="logo" href="#top" aria-label="Home">
-      <span class="mark">AS</span>
-      <span class="name">Aditya Shanghavi</span>
-    </a>
+    <div id="brain-container" class="brain-background"></div>
+    <div id="contact-3d" class="contact-3d-background"></div>
 
-    <div class="nav-links">
-      <a href="#about">About</a>
-      <a href="#travel">Travel</a>
-      <a href="#projects">Projects</a>
-      <a href="#cv">CV</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </div>
-</nav>
-
-  <main id="top">
-    <!-- HERO -->
-    <section class="hero">
-      <div class="container">
-        <h1 class="hero-title">Designing the Future of Human–AI Collaboration.</h1>
-
-        <p class="hero-subtitle">
-          I build intelligent systems that enhance human capability across healthcare, safety-critical environments,
-          and immersive technologies.
-        </p>
-      </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about" class="section">
-      <div class="container">
-        <h2 class="section-title">About</h2>
-        <p class="section-lead">
-          I’m a Research Scientist working at the intersection of neuroergonomics, human factors, and machine learning—building
-          human-centered AI systems grounded in measurable human behavior and physiology.
-        </p>
-
-        <div class="grid-3">
-          <article class="card">
-            <div class="card-letter">N</div>
-            <h3>Neuroergonomics</h3>
-            <p>
-              Quantifying workload, fatigue, attention, and adaptation using fNIRS, ECG/HR, IMUs, and behavioral measures.
-            </p>
-          </article>
-
-          <article class="card">
-            <div class="card-letter">A</div>
-            <h3>AI & Modeling</h3>
-            <p>
-              Interpretable ML pipelines for cognitive-state prediction and decision support, built on real-world data.
-            </p>
-          </article>
-
-          <article class="card">
-            <div class="card-letter">H</div>
-            <h3>Human Factors</h3>
-            <p>
-              Study design, usability testing, and translating insights into requirements for safety-critical systems.
-            </p>
-          </article>
+    <section id="hero">
+        <div class="content-wrapper">
+            <h1>Bridging minds and machines.</h1>
+            <p class="subtitle">1st year PhD student at UW-Madison - <a href="https://neuroergolab.org/" target="_blank" style="color: var(--color-primary); text-decoration: none;">Neuroergonomics Lab</a>.</p>
+            <a href="#about" class="cta-button">Learn more</a>
+            <a href="#contact" class="secondary-button">Get in touch</a>
         </div>
-      </div>
     </section>
 
-    <!-- TRAVEL -->
-    <section id="travel" class="section section-alt">
-      <div class="container">
-        <h2 class="section-title">Travel</h2>
-        <p class="section-lead">
-          A personal space for moments outside the lab—places, photos, and small stories that shape how I think and create.
-        </p>
-
-        <div class="grid-2">
-          <article class="panel">
-            <h3>Highlights</h3>
-            <p>
-              Add 3–6 favorite destinations with one-line reflections (what you learned, what surprised you, what you’d return for).
-            </p>
-          </article>
-
-          <article class="panel">
-            <h3>Photo grid (optional)</h3>
-            <p>
-              You can embed a simple image gallery here later (or link to an album). Keep it minimal and curated.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section id="projects" class="section">
-      <div class="container">
-        <h2 class="section-title">Projects</h2>
-        <p class="section-lead">
-          Selected work across AI, XR, physiological sensing, and human-centered system evaluation.
-        </p>
-
-        <div class="stack">
-          <article class="project">
-            <div class="project-tag">XR</div>
-            <div class="project-body">
-              <h3>AI-NPC VR Training for Emergency Response</h3>
-              <p>
-                VR training scenarios with LLM-powered characters, usability evaluation, and multimodal sensing to quantify performance and adaptation.
-              </p>
-              <a class="link" href="#" aria-label="View project (XR)">View Project →</a>
+    <section id="about">
+        <div class="content-wrapper">
+            <h2>Understanding how humans interact with advanced systems.</h2>
+            <p class="hero-text">I'm passionate about the intersection of neuroscience and engineering, focusing on how humans naturally interact with automated systems. My work explores cognitive ergonomics, neural interfaces, and designing technology that seamlessly integrates with human capabilities.</p>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon" style="font-style: normal;">N</div>
+                    <h3>Neuroscience</h3>
+                    <p>I use EEG and fNIRS to explore the neurodynamics of teaming, trust, error detection & more.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon" style="font-style: normal;">E</div>
+                    <h3>Engineering</h3>
+                    <p>Robotics, automation systems, survey development, VR design, and systems engineering.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon" style="font-style: normal;">R</div>
+                    <h3>Research Methods</h3>
+                    <p>Research Techniques: EEG/fNIRS cap placement/fitting (10-20), EMG, ECG, human motion tracking (XSENSE), eye-tracking (Tobii), HoloLens 2, & Meta Quest 3. Software: R, MATLAB, BrainVision, Homer3, Aurora, Noraxon, Tobii, LSL, Curry7, PsychoPy, Python, & Qualtrics.</p>
+                </div>
             </div>
-          </article>
+        </div>
+    </section>
 
-          <article class="project">
-            <div class="project-tag">FATIGUE</div>
-            <div class="project-body">
-              <h3>Operational Fatigue Detection in EMS</h3>
-              <p>
-                Longitudinal modeling with wearable and contextual features to predict fatigue and identify robust physiological indicators.
-              </p>
-              <a class="link" href="#" aria-label="View project (Fatigue)">View Project →</a>
+    <section id="research">
+        <div class="content-wrapper">
+            <h2>Research focus areas.</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>Human-Robot Collaboration</h3>
+                    <p>Investigating effective teamwork between humans and robots in shared environments, focusing on trust, communication, and shared decision-making.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Neuroergonomics</h3>
+                    <p>Defined as "the study of the human brain in relation to performance at work and everyday settings" (Parasuraman, 2003). I apply neurophysiological tools to understand cognitive states like mental workload, vigilance, and error detection in real-world human-machine interaction.</p>
+                </div>
             </div>
-          </article>
+        </div>
+    </section>
 
-          <article class="project">
-            <div class="project-tag">MEDTECH</div>
-            <div class="project-body">
-              <h3>Human-Centered Medical Device Development</h3>
-              <p>
-                Translating user needs into design requirements and validation plans aligned with usability engineering and risk-driven development.
-              </p>
-              <a class="link" href="#" aria-label="View project (MedTech)">View Project →</a>
+    <section id="projects">
+        <div class="content-wrapper">
+            <h2>Featured projects.</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">HRI</div>
+                    <div class="project-content">
+                        <h3>Physical Human-Robot Interaction</h3>
+                        <p>This project focused on understanding how human biomechanics and neural responses change when physically collaborating with a UR10e robotic arm, especially when the robot's reliability is varied. Experiments were conducted using a breadth of bioinstrumentation, including EEG, fNIRS, eye-tracking, AMTI Force Plates, EMG, and ECG. I utilized methods and software such as Lab Streaming Layer (LSL), Python, and MATLAB to streamline data collection and perform detailed data analysis across these methodologies.</p>
+                        <a href="projects.html" class="project-link">View Project →</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">NEURAL</div>
+                    <div class="project-content">
+                        <h3>Neurodynamics of taskwork and teamwork in multihuman-robot teams</h3>
+                        <p>This research investigates the **neurodynamics** of taskwork and teamwork in Search and Rescue (SAR) teams as they transition between multi-human and multi-human-robot configurations. Using **EEG and EEG hyperscanning** (interbrain synchrony), the study analyzed how the team's neural patterns changed when a human navigator was replaced by a virtual robot navigator. The project's goal was to show that multi-human robot teaming is a fundamentally distinct team construct that alters both taskwork and teamwork, regardless of the robot's capabilities.</p>
+                        <a href="projects.html" class="project-link">View Project →</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">SURVEY</div>
+                    <div class="project-content">
+                        <h3>Comfort Survey Development</h3>
+                        <p>I am currently developing and validating a new scale designed for use in real-world working settings. This scale will be used to accurately assess how comfortable workers are with the presence and activity of robots in their immediate environment.</p>
+                        <a href="projects.html" class="project-link">View Project →</a>
+                    </div>
+                </div>
             </div>
-          </article>
         </div>
-      </div>
     </section>
 
-    <!-- CV -->
-    <section id="cv" class="section section-alt">
-      <div class="container">
-        <h2 class="section-title">CV</h2>
-        <p class="section-lead">
-          Download or view my CV.
-        </p>
-
-        <div class="contact-row">
-          <!-- Option 1: Link to a PDF in your repo, e.g. /assets/Aditya_Shanghavi_CV.pdf -->
-          <a class="btn btn-primary" href="assets/Aditya_Shanghavi_CV.pdf" target="_blank" rel="noopener noreferrer">
-            View CV (PDF)
-          </a>
-
-          <!-- Option 2: If you want a Google Drive link instead, replace the href above -->
-          <!-- <a class="btn btn-primary" href="YOUR_GOOGLE_DRIVE_CV_LINK" target="_blank" rel="noopener noreferrer">View CV (PDF)</a> -->
+    <section id="contact" class="contact-section">
+        <div class="content-wrapper">
+            <h2>Let's connect.</h2>
+            <p class="hero-text">Interested in collaboration or have questions about my work?</p>
+            <div class="contact-links">
+                <a href="mailto:spenceley@wisc.edu" class="contact-link" target="_blank">Email</a>
+                <a href="https://www.linkedin.com/in/spenceleyy" class="contact-link" target="_blank">LinkedIn</a>
+            </div>
         </div>
-      </div>
     </section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="section">
-      <div class="container">
-        <h2 class="section-title">Contact</h2>
-        <p class="section-lead">
-          Interested in collaboration, consulting, or just chatting about human-centered AI and sensing?
-        </p>
+    <footer>
+        <p>&copy; 2025 RS. Imagine reading a book with no way to turn back the pages. How carefully would you read it? That's life.</p>
+    </footer>
 
-        <div class="contact-row">
-          <a class="btn btn-primary" href="mailto:YOUR_EMAIL@example.com">Email</a>
-          <a class="btn btn-ghost" href="https://www.linkedin.com/in/YOUR_LINKEDIN/" target="_blank" rel="noopener noreferrer">
-            LinkedIn
-          </a>
-          <a class="btn btn-ghost" href="https://github.com/YOUR_GITHUB" target="_blank" rel="noopener noreferrer">
-            GitHub
-          </a>
-        </div>
+    <script src="js/navigation.js"></script>
+    <script>
+        // --- 1. BRAIN BACKGROUND (Loads GLB file) ---
+        const brainContainer = document.getElementById('brain-container');
+        const brainScene = new THREE.Scene();
+        const brainCamera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 100); 
+        const brainRenderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
 
-        <footer class="footer">
-          <span>© <span id="year"></span> Aditya Shanghavi.</span>
-          <span class="footer-quote">Human-centered systems. Measurable impact.</span>
-        </footer>
-      </div>
-    </section>
-  </main>
+        brainRenderer.setSize(window.innerWidth, window.innerHeight);
+        brainRenderer.setClearColor(0x000000, 0);
+        brainContainer.appendChild(brainRenderer.domElement);
 
-  <script src="script.js"></script>
+        const brainGroup = new THREE.Group();
+        brainScene.add(brainGroup);
+
+        const centerBrainModel = (model) => {
+            const box = new THREE.Box3().setFromObject(model);
+            const center = new THREE.Vector3();
+            box.getCenter(center);
+            model.position.sub(center);
+        };
+
+        const updateBrainScale = () => {
+            const width = window.innerWidth;
+            let scale = 0.9;
+            let cameraZ = 10;
+
+            if (width <= 480) {
+                scale = 0.6;
+                cameraZ = 13;
+            } else if (width <= 768) {
+                scale = 0.75;
+                cameraZ = 11.5;
+            }
+
+            brainGroup.scale.set(scale, scale, scale);
+            brainCamera.position.z = cameraZ;
+        };
+        updateBrainScale();
+
+        const brainAmbient = new THREE.AmbientLight(0xffffff, 1.2); 
+        brainScene.add(brainAmbient);
+
+        const brainLight1 = new THREE.DirectionalLight(0xffffff, 1.5); 
+        brainLight1.position.set(5, 5, 5);
+        brainScene.add(brainLight1);
+
+        brainCamera.position.z = 10;
+        let brainScrollRotation = 0;
+        let loadedBrainModel; 
+        
+        const visibleMaterial = new THREE.MeshBasicMaterial({
+            color: 0xA294A6,
+            wireframe: true,
+            transparent: true,
+            opacity: 0.85
+        });
+
+        function initGLTFLoader() {
+            if (typeof THREE.GLTFLoader === 'undefined') {
+                if (initGLTFLoader.attempts > 10) {
+                    return; 
+                }
+                
+                initGLTFLoader.attempts = (initGLTFLoader.attempts || 0) + 1;
+                setTimeout(initGLTFLoader, 100);
+                return;
+            }
+
+            const loader = new THREE.GLTFLoader();
+
+            loader.load(
+                '/models/uploads-files-2145984-brain.glb',
+                function (gltf) {
+                    loadedBrainModel = gltf.scene;
+                    
+                    loadedBrainModel.traverse((child) => {
+                        if (child.isMesh) {
+                            child.material = visibleMaterial;
+                        }
+                    });
+                    
+                    loadedBrainModel.scale.set(8, 8, 8);
+                    loadedBrainModel.rotation.set(0, Math.PI / 4, 0); 
+                    loadedBrainModel.position.set(0, 0, 0);
+
+                    brainGroup.add(loadedBrainModel);
+                    centerBrainModel(loadedBrainModel);
+                    updateBrainScale();
+                    animate(); 
+                },
+                function (xhr) {},
+                function (error) {
+                    console.error('An error occurred loading the GLB model:', error);
+                }
+            );
+        }
+
+        window.onload = function() {
+            initGLTFLoader();
+        };
+        
+        function animate() {
+            requestAnimationFrame(animate);
+            
+            if (loadedBrainModel) {
+                loadedBrainModel.rotation.y = brainScrollRotation * 0.5; 
+                loadedBrainModel.rotation.x = Math.sin(brainScrollRotation * 0.3) * 0.1;
+            }
+            
+            brainRenderer.render(brainScene, brainCamera);
+            
+            sphereGroup.rotation.y += 0.005;
+            sphereGroup.rotation.x = Math.sin(Date.now() * 0.0005) * 0.1;
+            contactRenderer.render(contactScene, contactCamera);
+        }
+
+        // --- 2. CONTACT PAGE 3D SPHERE ---
+        const contactContainer = document.getElementById('contact-3d');
+        const contactScene = new THREE.Scene();
+        const contactCamera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 100);
+        const contactRenderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+
+        contactRenderer.setSize(window.innerWidth, window.innerHeight);
+        contactRenderer.setClearColor(0x000000, 0);
+        contactContainer.appendChild(contactRenderer.domElement);
+
+        const sphereGroup = new THREE.Group();
+
+        const contactGeometry = new THREE.IcosahedronGeometry(3, 1);
+        const contactMaterial = new THREE.MeshPhongMaterial({
+            color: 0x0071e3, 
+            wireframe: true, 
+            shininess: 50
+        });
+
+        const contactSphere = new THREE.Mesh(contactGeometry, contactMaterial);
+        sphereGroup.add(contactSphere);
+        contactScene.add(sphereGroup);
+
+        const contactAmbient = new THREE.AmbientLight(0xffffff, 0.8);
+        contactScene.add(contactAmbient);
+
+        contactCamera.position.z = 8;
+
+        // --- 3. EVENT HANDLERS ---
+        window.addEventListener('scroll', () => {
+            brainScrollRotation = window.scrollY * 0.0008;
+            
+            const contactSection = document.getElementById('contact');
+            if (contactSection) {
+                const rect = contactSection.getBoundingClientRect();
+                const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+                
+                if (isVisible) {
+                    contactSection.classList.add('active');
+                } else {
+                    contactSection.classList.remove('active');
+                }
+            }
+        });
+        
+        window.addEventListener('resize', () => {
+            brainCamera.aspect = window.innerWidth / window.innerHeight;
+            brainCamera.updateProjectionMatrix();
+            brainRenderer.setSize(window.innerWidth, window.innerHeight);
+            updateBrainScale();
+            
+            contactCamera.aspect = window.innerWidth / window.innerHeight;
+            contactCamera.updateProjectionMatrix();
+            contactRenderer.setSize(window.innerWidth, window.innerHeight);
+        });
+        
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if (this.getAttribute('href').startsWith('#') && this.getAttribute('href') !== '#') { 
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            window.scrollTo(0, 0);
+            setTimeout(() => {
+                window.scrollTo(0, 0);
+            }, 10);
+        });
+    </script>
 </body>
 </html>
