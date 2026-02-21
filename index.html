@@ -282,6 +282,7 @@
         }
         
         #hero .content-wrapper{
+          max-width: 1200px;
           display: grid;
           grid-template-columns: 1fr 260px; /* text | image column */
           align-items: center;
@@ -300,9 +301,9 @@
         }
         
         /* your existing image size is fine */
-        #hero .hero-image img{
-          width: 214px;
-          display: block;    /* avoids inline image spacing quirks */
+        .hero-image img {
+            border-radius: 16px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
         }
 
         #about {
@@ -530,7 +531,7 @@
             
         }
 
-       @media (max-width: 768px) {
+      @media (max-width: 768px) {
       h1 {
         font-size: 3rem;
         letter-spacing: -1.5px;
@@ -584,7 +585,7 @@
         padding: 50px 1.5rem 25px;
       }
     
-      /* ✅ HERO grid -> stacked on mobile */
+      /* HERO grid -> stacked on mobile */
       #hero .content-wrapper {
         grid-template-columns: 1fr;
         justify-items: center;
@@ -595,17 +596,13 @@
       #hero .hero-image {
         justify-self: center;
       }
-    }
-            
-            .hero-text {
-              max-width: 100%;
-            }
-            
-            .hero-image img {
-              width: 220px;
-              margin-top: 24px;
-            }
+    
+      /* these belonged inside the media query */
+      #hero .hero-image img {
+          width: 220px;
+          margin-top: 24px;
         }
+    }
 
         @media (max-width: 540px) {
             body {
@@ -628,7 +625,7 @@
               padding: 45px 1.25rem 20px;
             }
             
-            .hero-image img {
+            #hero .hero-image img {
               width: 200px;
             }
         }
