@@ -281,12 +281,28 @@
             display: block;                /* Prevents vertical centering */
         }
         
-        #hero .content-wrapper {
-          display: flex;
+        #hero .content-wrapper{
+          display: grid;
+          grid-template-columns: 1fr 260px; /* text | image column */
           align-items: center;
-          justify-content: flex-start; /* was space-between */
-          gap: 24px;                   /* controls the spacing */
+          column-gap: 28px;                 /* controls the gap */
           text-align: left;
+        }
+        
+        /* Keep your text from stretching weirdly */
+        #hero .hero-text{
+          max-width: none;  /* grid controls width now */
+        }
+        
+        /* Make image container align to the right edge of its column */
+        #hero .hero-image{
+          justify-self: end;
+        }
+        
+        /* your existing image size is fine */
+        #hero .hero-image img{
+          width: 214px;
+          display: block;    /* avoids inline image spacing quirks */
         }
 
         #about {
@@ -299,11 +315,6 @@
           min-height: auto;
           display: block;
           padding: 6rem 5%;
-        }
-        
-        .hero-text {
-            flex: 1;
-            max-width: 640px;
         }
         
         #hero h1 {
@@ -515,73 +526,76 @@
               padding: 60px 5% 30px;
             }
             
-            #hero .content-wrapper {
-              gap: 40px;
-            }
+            #hero .content-wrapper { column-gap: 20px; }
             
-            .hero-image img {
-              width: 280px;
-            }
         }
 
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 3rem;
-                letter-spacing: -1.5px; 
-            }
-            h2 {
-                font-size: 2.5rem;
-                letter-spacing: -1px;
-            }
-            .subtitle {
-                font-size: 1.25rem;
-            }
-            .nav-links {
-                gap: 1.5rem;
-            }
-            .brain-background {
-                width: 500px;
-                height: 500px;
-            }
-            section {
-                padding: 5.5rem 1.5rem;
-            }
-            .secondary-button {
-                margin-left: 0;
-                margin-top: 1rem; 
-            }
-
-            nav {
-                position: sticky;
-            }
-
-            .nav-content {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 0.5rem 1rem;
-                width: 100%;
-            }
-
-            .nav-links {
-                width: 100%;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 0.5rem 1rem;
-            }
-
-            .nav-links a {
-                padding: 0.25rem 0;
-                text-align: center;
-            }
-
-            #hero {
-              padding: 50px 1.5rem 25px;
-            }
-            
-            #hero .content-wrapper {
-              flex-direction: column;
-              text-align: center;
-            }
+       @media (max-width: 768px) {
+      h1 {
+        font-size: 3rem;
+        letter-spacing: -1.5px;
+      }
+      h2 {
+        font-size: 2.5rem;
+        letter-spacing: -1px;
+      }
+      .subtitle {
+        font-size: 1.25rem;
+      }
+      .nav-links {
+        gap: 1.5rem;
+      }
+      .brain-background {
+        width: 500px;
+        height: 500px;
+      }
+      section {
+        padding: 5.5rem 1.5rem;
+      }
+      .secondary-button {
+        margin-left: 0;
+        margin-top: 1rem;
+      }
+    
+      nav {
+        position: sticky;
+      }
+    
+      .nav-content {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem 1rem;
+        width: 100%;
+      }
+    
+      .nav-links {
+        width: 100%;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem 1rem;
+      }
+    
+      .nav-links a {
+        padding: 0.25rem 0;
+        text-align: center;
+      }
+    
+      #hero {
+        padding: 50px 1.5rem 25px;
+      }
+    
+      /* ✅ HERO grid -> stacked on mobile */
+      #hero .content-wrapper {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        text-align: center;
+        row-gap: 24px;
+      }
+    
+      #hero .hero-image {
+        justify-self: center;
+      }
+    }
             
             .hero-text {
               max-width: 100%;
