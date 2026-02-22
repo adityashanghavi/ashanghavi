@@ -95,6 +95,80 @@
       margin-bottom: 2.5rem;
     }
 
+    .highlights {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin: 1.5rem 0 2.5rem;
+    }
+
+    .highlight-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 16px;
+      padding: 1.1rem;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+      text-align: left;
+    }
+
+    .highlight-kicker {
+      color: var(--color-text-body);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      margin-bottom: 0.35rem;
+    }
+
+    .highlight-value {
+      font-size: 1.05rem;
+      font-weight: 600;
+      line-height: 1.25;
+    }
+
+    .highlight-note {
+      color: var(--color-text-body);
+      font-size: 0.95rem;
+      margin-top: 0.4rem;
+    }
+
+    @media (max-width: 900px){
+      .highlights { grid-template-columns: 1fr; }
+    }
+
+    .case-grid{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 0.75rem 0 2.5rem;
+    }
+
+    .case-card{
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 16px;
+      padding: 1.25rem;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+      text-align: left;
+    }
+
+    .case-card h3{
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .case-card ul{
+      margin-left: 1.1rem;
+      color: var(--color-text-body);
+      font-size: 0.98rem;
+    }
+
+    .case-card li{
+      margin: 0.4rem 0;
+    }
+
+    @media (max-width: 900px){
+      .case-grid{ grid-template-columns: 1fr; }
+    }
+
     .section-title{
       font-size: 1.5rem;
       letter-spacing: -0.5px;
@@ -190,6 +264,57 @@
       As a Project Lead at US Medical Innovations, I led the design and development of the Canady Robotics SR-70 Surgical System, overseeing an $8M R&D program from concept through verification. I contributed to the clinical translation and launch of the Canady Plasma XL-1000 Generator, advancing cold plasma technology from laboratory research to patient care. My work spanned electromechanical system design, PCB prototyping, supplier management under ISO 13485, and full FDA design control documentation, including risk management under ISO 14971 and verification and validation activities. I supported regulatory testing under IEC 60601, 62366, and 62304 standards, while collaborating closely with clinicians and cross-functional teams to refine safety-critical, human-centered interfaces. This work resulted in five U.S. patents in surgical robotics and medical device engineering.
     </p>
 
+    <div class="highlights">
+      <div class="highlight-card">
+        <div class="highlight-kicker">Programs</div>
+        <div class="highlight-value">Surgical robotics and energy devices</div>
+        <div class="highlight-note">Human-centered interfaces for safety-critical workflows</div>
+      </div>
+
+      <div class="highlight-card">
+        <div class="highlight-kicker">Execution</div>
+        <div class="highlight-value">Concept through verification</div>
+        <div class="highlight-note">Design controls, risk management, V&V, and standards testing</div>
+      </div>
+
+      <div class="highlight-card">
+        <div class="highlight-kicker">Outputs</div>
+        <div class="highlight-value">Multiple U.S. patents</div>
+        <div class="highlight-note">Robotic handpiece architecture and generator industrial design</div>
+      </div>
+    </div>
+
+    <div class="case-grid">
+      <div class="case-card">
+        <h3>What I owned</h3>
+        <ul>
+          <li>System-level design leadership across robotics and electrosurgical platforms</li>
+          <li>Human-centered interface and workflow design with clinician feedback loops</li>
+          <li>Design controls deliverables: requirements, risk analysis, V&V planning and execution</li>
+          <li>Supplier coordination under ISO 13485 quality systems</li>
+        </ul>
+      </div>
+
+      <div class="case-card">
+        <h3>How it was validated</h3>
+        <ul>
+          <li>Iterative prototyping and bench testing for safety-critical behavior</li>
+          <li>Verification testing against engineering requirements and hazards</li>
+          <li>Standards-aligned testing support (IEC 60601, IEC 62366, IEC 62304, ISO 14971)</li>
+          <li>Use-focused refinement informed by clinician feedback and lab evaluation</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 class="section-title">Technical scope</h2>
+    <div class="pub-list">
+      <div class="pub-card">
+        <div class="pub-meta">
+          Surgical robotics • Electromechanical systems design & development • Project management • Supplier management (ISO 13485) • Risk management (ISO 14971) • Usability engineering (IEC 62366) • Software lifecycle support (IEC 62304) • Medical electrical equipment testing support (IEC 60601) • Design controls documentation and V&V
+        </div>
+      </div>
+    </div>
+
     <h2 class="section-title">Patents: Handheld Laparoscopic Robotic Tool</h2>
     <div class="pub-list">
 
@@ -209,7 +334,7 @@
         </a>
         <div class="pub-meta">
           The ornamental design for a robotic surgical system hand piece.
-          <span>• Patent No: USD878584S1</span>
+          <span>• Patent No: USD878583S1</span>
         </div>
       </article>
     </div>
@@ -229,7 +354,7 @@
 
       <article class="pub-card">
         <a class="pub-title" href="https://patents.google.com/patent/US11612425B2/en" target="_blank" rel="noopener noreferrer">
-          Configurable electrosurgical generator housing
+         A configurable electrosurgical generator front panel.
         </a>
         <div class="pub-meta">
           <span>• Patent No: US11612425B2</span>
