@@ -95,6 +95,80 @@
       margin-bottom: 2.5rem;
     }
 
+    .highlights {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin: 1.5rem 0 2.5rem;
+    }
+
+    .highlight-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 16px;
+      padding: 1.1rem;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+      text-align: left;
+    }
+
+    .highlight-kicker {
+      color: var(--color-text-body);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      margin-bottom: 0.35rem;
+    }
+
+    .highlight-value {
+      font-size: 1.05rem;
+      font-weight: 600;
+      line-height: 1.25;
+    }
+
+    .highlight-note {
+      color: var(--color-text-body);
+      font-size: 0.95rem;
+      margin-top: 0.4rem;
+    }
+
+    .case-grid{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 0.75rem 0 2.5rem;
+    }
+
+    .case-card{
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 16px;
+      padding: 1.25rem;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+      text-align: left;
+    }
+
+    .case-card h3{
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .case-card ul{
+      margin-left: 1.1rem;
+      color: var(--color-text-body);
+      font-size: 0.98rem;
+    }
+
+    .case-card li{
+      margin: 0.4rem 0;
+    }
+
+    @media (max-width: 900px){
+      .case-grid{ grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 900px){
+      .highlights { grid-template-columns: 1fr; }
+    }
+
     .section-title{
       font-size: 1.5rem;
       letter-spacing: -0.5px;
@@ -190,7 +264,74 @@
       I am leading a multi-million dollar NSF-funded VR-based training initiative for emergency responders, integrating LLM-powered characters and usability testing to enhance training efficiency up to 25%. Also spearheading a multi-modal fatigue detection system to better understand and predict human states of fatigue and stress in individuals with high-stress jobs such as emergency medical service professionals. I also lead the translation of data-driven insights into actionable system improvements.
     </p>
 
-    <h2 class="section-title">Journal Articles</h2>
+    <div class="highlights">
+      <div class="highlight-card">
+        <div class="highlight-kicker">System built</div>
+        <div class="highlight-value">Multimodal fatigue detection pipeline</div>
+        <div class="highlight-note">Wearables + self-reports + context signals</div>
+      </div>
+
+      <div class="highlight-card">
+        <div class="highlight-kicker">Core goal</div>
+        <div class="highlight-value">Predict and track fatigue under real operations</div>
+        <div class="highlight-note">Longitudinal field monitoring in high-stress roles</div>
+      </div>
+
+      <div class="highlight-card">
+        <div class="highlight-kicker">Outcome</div>
+        <div class="highlight-value">Actionable, human-centered feedback</div>
+        <div class="highlight-note">Signals translated into operationally usable insights</div>
+      </div>
+    </div>
+
+    <div class="case-grid">
+      <div class="case-card">
+        <h3>The problem</h3>
+        <ul>
+          <li>Fatigue is cumulative, context-dependent, and hard to detect early</li>
+          <li>Self-reports are noisy and delayed relative to physiological changes</li>
+          <li>Operational environments add confounds like stress and workload</li>
+        </ul>
+      </div>
+
+      <div class="case-card">
+        <h3>Data & sensing</h3>
+        <ul>
+          <li>Wearable physiology for continuous monitoring</li>
+          <li>Longitudinal data collection across real shifts</li>
+          <li>Context signals to interpret operational demands</li>
+        </ul>
+      </div>
+
+      <div class="case-card">
+        <h3>Modeling approach</h3>
+        <ul>
+          <li>Feature engineering from physiological time series</li>
+          <li>Prediction and forecasting of fatigue and stress states</li>
+          <li>Validation with human-centered evaluation metrics</li>
+        </ul>
+      </div>
+
+      <div class="case-card">
+        <h3>Why it matters</h3>
+        <ul>
+          <li>Supports safer decision-making in high-stakes work</li>
+          <li>Enables early detection and targeted intervention</li>
+          <li>Turns raw sensor streams into deployable insights</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 class="section-title">Technology stack</h2>
+    <div class="pub-list">
+      <div class="pub-card">
+        <div class="pub-meta">
+          Wearable Physiology • Time-Series Feature Engineering • Machine Learning • Longitudinal Study Design • Human Factors Evaluation • Operational Analytics
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-title">Conference Proceedings</h2>
     <div class="pub-list">
 
       <article class="pub-card">
@@ -203,11 +344,9 @@
         </div>
         <div class="pub-tags">
           <span class="tag">Fatigue</span>
-          <span class="tag">Phsyiological Sensing</span>
+          <span class="tag">Physiological Sensing</span>
         </div>
       </article>
-    </div>
-
     </div>
 
   </main>
