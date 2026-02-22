@@ -95,6 +95,80 @@
       margin-bottom: 2.5rem;
     }
 
+    .highlights {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin: 1.5rem 0 2.5rem;
+    }
+
+    .highlight-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 16px;
+      padding: 1.1rem;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+      text-align: left;
+    }
+
+    .highlight-kicker {
+      color: var(--color-text-body);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      margin-bottom: 0.35rem;
+    }
+
+    .highlight-value {
+      font-size: 1.05rem;
+      font-weight: 600;
+      line-height: 1.25;
+    }
+
+    .highlight-note {
+      color: var(--color-text-body);
+      font-size: 0.95rem;
+      margin-top: 0.4rem;
+    }
+
+    @media (max-width: 900px){
+      .highlights { grid-template-columns: 1fr; }
+    }
+
+    .case-grid{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 0.75rem 0 2.5rem;
+    }
+
+    .case-card{
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 16px;
+      padding: 1.25rem;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+      text-align: left;
+    }
+
+    .case-card h3{
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .case-card ul{
+      margin-left: 1.1rem;
+      color: var(--color-text-body);
+      font-size: 0.98rem;
+    }
+
+    .case-card li{
+      margin: 0.4rem 0;
+    }
+
+    @media (max-width: 900px){
+      .case-grid{ grid-template-columns: 1fr; }
+    }
+
     .section-title{
       font-size: 1.5rem;
       letter-spacing: -0.5px;
@@ -187,12 +261,78 @@
     <h1>Augmented Reality for Surgical Telementoring</h1>
     <h2>Researcher</h2>
     <p class="subtitle">
-      During my PhD in Biomedical Engineering at Purdue University, I developed a non-invasive, wearable sensor-based diagnostic system for Parkinson’s disease tremor assessment. I designed signal processing and machine learning pipelines to extract and quantify tremor dynamics from wrist-worn inertial sensors, engineering a data-driven severity metric that demonstrated greater sensitivity than the current clinical gold standard. Working closely with neurologists at a Parkinson’s Foundation Center of Excellence, I aligned the system with established clinical measures and validated it through structured clinician feedback and human subjects testing. This work advanced objective, telehealth-enabled tremor quantification and has been published and presented in leading scientific venues.
+      I contributed to an augmented reality surgical telementoring platform that enabled remote experts to guide procedures using a transparent display and in-field virtual annotations. The work focused on translating expert intent into intuitive overlays, reducing attention shifts, and validating the system for real surgical workflows including austere environments.
     </p>
+
+    <div class="highlights">
+      <div class="highlight-card">
+        <div class="highlight-kicker">System</div>
+        <div class="highlight-value">AR transparent display telementoring</div>
+        <div class="highlight-note">Remote expertise delivered in the surgical field of view</div>
+      </div>
+
+      <div class="highlight-card">
+        <div class="highlight-kicker">Core capability</div>
+        <div class="highlight-value">Virtual annotations aligned to anatomy</div>
+        <div class="highlight-note">Real-time guidance without breaking sterile workflow</div>
+      </div>
+
+      <div class="highlight-card">
+        <div class="highlight-kicker">Use case</div>
+        <div class="highlight-value">Surgical support in austere environments</div>
+        <div class="highlight-note">Designed for constrained settings and rapid deployment</div>
+      </div>
+    </div>
+
+    <div class="case-grid">
+      <div class="case-card">
+        <h3>The problem</h3>
+        <ul>
+          <li>Remote experts cannot easily “point” or demonstrate precise guidance in real time</li>
+          <li>Surgical teams lose time and safety margin with frequent attention shifts</li>
+          <li>Austere environments increase the cost of limited expertise</li>
+        </ul>
+      </div>
+
+      <div class="case-card">
+        <h3>What we built</h3>
+        <ul>
+          <li>Transparent AR display for in-field overlays</li>
+          <li>Virtual annotations anchored to the surgical scene</li>
+          <li>Interaction patterns designed for surgical constraints</li>
+        </ul>
+      </div>
+
+      <div class="case-card">
+        <h3>How it was evaluated</h3>
+        <ul>
+          <li>Task-driven studies focused on accuracy and speed</li>
+          <li>Qualitative feedback on usability and workflow fit</li>
+          <li>Scenarios relevant to real operating conditions</li>
+        </ul>
+      </div>
+
+      <div class="case-card">
+        <h3>Why it matters</h3>
+        <ul>
+          <li>Makes expert guidance available beyond major medical centers</li>
+          <li>Reduces cognitive burden by keeping guidance in view</li>
+          <li>Improves coordination and decision support under pressure</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 class="section-title">Technology stack</h2>
+    <div class="pub-list">
+      <div class="pub-card">
+        <div class="pub-meta">
+          Augmented Reality • Transparent Displays • Scene Alignment • Computer Vision and Tracking • Real-Time Rendering • Human Factors and Usability Evaluation • Telemedicine Workflows
+        </div>
+      </div>
+    </div>
 
     <h2 class="section-title">Journal Articles</h2>
     <div class="pub-list">
-
       <article class="pub-card">
         <a class="pub-title" href="https://doi.org/10.1016/j.surg.2015.12.016" target="_blank" rel="noopener noreferrer">
           Medical telementoring using an augmented reality transparent display
@@ -264,41 +404,18 @@
       </article>
 
       <article class="pub-card">
-        <a class="pub-title" href="10.1109/ISMAR-Adjunct.2016.0049" target="_blank" rel="noopener noreferrer">
+        <a class="pub-title" href="<a class="pub-title" href="https://doi.org/10.1109/ISMAR-Adjunct.2016.0049" target="_blank" rel="noopener noreferrer">" target="_blank" rel="noopener noreferrer">
           Hand-Held, Self-Contained Simulated Transparent Display
         </a>
         <div class="pub-meta">
-          Hand-Held, Self-Contained Simulated Transparent Display. <em>IEEE International Symposium on Mixed and Augmented Reality (ISMAR-Adjunct)</em>. 2016.
+          Andersen D., Popescu V., Cabrera M.E., Shanghavi A., Gomez G., Marley S., Mullis B., Wachs J.P. <em>IEEE International Symposium on Mixed and Augmented Reality (ISMAR-Adjunct)</em>. 2016.
         </div>
         <div class="pub-tags">
+          <span class="tag">Augmented Reality</span>
           <span class="tag">Transparent Display</span>
-          <span class="tag">Mobile Devices</span>
-          <span class="tag">Depth Camera</span>
-          <span class="tag">Head Tracking</span>
-          <span class="tag">Prototype Implementation</span>
-          <span class="tag">Augmented Reality Applications</span>
-          <span class="tag">Tracking Error</span>
-          <span class="tag">Actual Position</span>
-          <span class="tag">Depth Data</span>
-          <span class="tag">Eye Position</span>
-          <span class="tag">Diplopia</span>
-          <span class="tag">User Location</span>
-          <span class="tag">Color Camera</span>
-          <span class="tag">Person Image</span>
-          <span class="tag">Single Camera</span>
-          <span class="tag">Transparent System</span>
-          <span class="tag">Delaunay Triangulation</span>
-          <span class="tag">Homography</span>
-          <span class="tag">User Views</span>
-          <span class="tag">Part Of The Scene</span>
-          <span class="tag">Scene Geometry</span>
-          <span class="tag">View Of The Scene</span>
-          <span class="tag">Acquisition Of Capabilities</span>
-          <span class="tag">Video Feed</span>
-          <span class="tag">Onboard Camera</span>
-          <span class="tag">Scene Changes</span>
-          <span class="tag">Scene Images</span>
-          <span class="tag">Structured Illumination</span>
+          <span class="tag">Tracking</span>
+          <span class="tag">Prototype</span>
+          <span class="tag">ISMAR</span>
         </div>
       </article>
 
