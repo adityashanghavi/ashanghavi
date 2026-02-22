@@ -26,6 +26,41 @@
       line-height: 1.6;
     }
 
+    .case-grid{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 0.75rem 0 2.5rem;
+    }
+
+    .case-card{
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 16px;
+      padding: 1.25rem;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+      text-align: left;
+    }
+
+    .case-card h3{
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .case-card ul{
+      margin-left: 1.1rem;
+      color: var(--color-text-body);
+      font-size: 0.98rem;
+    }
+
+    .case-card li{
+      margin: 0.4rem 0;
+    }
+
+    @media (max-width: 900px){
+      .case-grid{ grid-template-columns: 1fr; }
+    }
+
     /* --- NAV --- */
     nav{
       position: sticky;
@@ -93,6 +128,45 @@
       font-size: 1.1rem;
       max-width: 850px;
       margin-bottom: 2.5rem;
+    }
+
+    .highlights {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin: 1.5rem 0 2.5rem;
+    }
+
+    .highlight-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 16px;
+      padding: 1.1rem;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+      text-align: left;
+    }
+
+    .highlight-kicker {
+      color: var(--color-text-body);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      margin-bottom: 0.35rem;
+    }
+
+    .highlight-value {
+      font-size: 1.05rem;
+      font-weight: 600;
+      line-height: 1.25;
+    }
+
+    .highlight-note {
+      color: var(--color-text-body);
+      font-size: 0.95rem;
+      margin-top: 0.4rem;
+    }
+
+    @media (max-width: 900px){
+      .highlights { grid-template-columns: 1fr; }
     }
 
     .section-title{
@@ -187,8 +261,75 @@
     <h1>VR Interface to Improve Police Training</h1>
     <h2>Research Scientist | Technical Project Lead</h2>
     <p class="subtitle">
-      I am leading a multi-million dollar NSF-funded VR-based training initiative for emergency responders, integrating LLM-powered characters and usability testing to enhance training efficiency with emphasis on adaptive feedback and human-centered system design.
+      I lead a multi-million dollar NSF-funded immersive training platform for emergency responders, integrating LLM-powered non-playable characters, multimodal sensing, and human factors evaluation to build adaptive, measurable, and scalable training systems.
     </p>
+
+    <div class="highlights">
+      <div class="highlight-card">
+        <div class="highlight-kicker">System built</div>
+        <div class="highlight-value">AI-powered immersive VR training platform</div>
+        <div class="highlight-note">Unity-based deployment on Meta Quest 3</div>
+      </div>
+
+      <div class="highlight-card">
+        <div class="highlight-kicker">Core innovation</div>
+        <div class="highlight-value">LLM-driven adaptive NPC interactions</div>
+        <div class="highlight-note">Behavioral realism with controllable personality traits</div>
+      </div>
+
+      <div class="highlight-card">
+        <div class="highlight-kicker">Evaluation framework</div>
+        <div class="highlight-value">Multimodal human factors assessment</div>
+        <div class="highlight-note">Behavioral + physiological + usability metrics</div>
+      </div>
+    </div>
+
+    <div class="case-grid">
+      <div class="case-card">
+        <h3>The problem</h3>
+        <ul>
+          <li>Traditional training lacks adaptive realism</li>
+          <li>Limited objective metrics of trainee performance</li>
+          <li>Static scripted scenarios reduce ecological validity</li>
+        </ul>
+      </div>
+
+      <div class="case-card">
+        <h3>System architecture</h3>
+        <ul>
+          <li>Unity-based immersive VR scenarios</li>
+          <li>LLM-powered NPC dialogue and behavior control</li>
+          <li>Backend behavioral logging and state tracking</li>
+        </ul>
+      </div>
+
+      <div class="case-card">
+        <h3>Human factors evaluation</h3>
+        <ul>
+          <li>Usability testing under structured protocols</li>
+          <li>Performance-based behavioral metrics</li>
+          <li>Physiological sensing for cognitive load assessment</li>
+        </ul>
+      </div>
+
+      <div class="case-card">
+        <h3>Why it matters</h3>
+        <ul>
+          <li>Improves realism and training transfer</li>
+          <li>Supports measurable performance evaluation</li>
+          <li>Enables scalable, data-driven training refinement</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 class="section-title">Technology stack</h2>
+    <div class="pub-list">
+      <div class="pub-card">
+        <div class="pub-meta">
+          Unity • Meta Quest 3 • Large Language Models • Behavioral Logging Pipelines • Human Factors Experimental Design • Multimodal Sensing
+        </div>
+      </div>
+    </div>
 
     <h2 class="section-title">Conference Papers</h2>
     <div class="pub-list">
