@@ -318,69 +318,63 @@
           padding: 6rem 5%;
         }
         
-        .edu-grid{
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-          gap: 2rem;
+        .education-list{
           margin-top: 3rem;
-          text-align: left;
-        }
-        
-        .edu-card{
-          padding: 2.25rem;
-          background: var(--color-background-main);
-          border-radius: 18px;
-          box-shadow: 0 4px 16px rgba(0,0,0,0.4);
-          border: 1px solid rgba(255,255,255,0.1);
-        }
-        
-        .edu-card h3{
-          font-size: 1.35rem;
-          font-weight: 600;
-          margin-bottom: 0.35rem;
-          letter-spacing: -0.5px;
+          display: flex;
+          flex-direction: column;
+          gap: 1.5rem;
         }
 
-        .edu-card{
-          position: relative; /* needed for the badge positioning */
+        .education-list{
+          max-width: 760px;   /* tighter than 980 */
+          margin: 3rem auto 0;
+        }
+
+        .education-text{
+          display: flex;
+          align-items: baseline;
+          gap: 0.35rem;
+          text-align: left;      /* looks cleaner for single rows */
+          flex: 1;
+          min-width: 0;          /* enables ellipsis if needed */
         }
         
-        /* Purdue logo badge */
-        .edu-logo{
-          position: absolute;
-          top: 18px;
-          right: 18px;
-          width: 44px;      /* tweak size here */
-          height: 44px;
+        .education-row img{
+          flex: 0 0 auto;        /* prevents shrinking */
+        }
+        
+        .education-row{
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 1.25rem 0;
+          border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        
+        .education-text{
+          font-size: 1.2rem;
+          color: var(--color-text-dark);
+          letter-spacing: -0.3px;
+        }
+        
+        .education-row img{
+          width: 48px;
+          height: auto;
           object-fit: contain;
-          opacity: 0.95;
-          filter: drop-shadow(0 6px 16px rgba(0,0,0,0.35));
+          opacity: 0.9;
         }
         
-        /* Optional: shrink on very small screens */
-        @media (max-width: 540px){
-          .edu-logo{
-            width: 38px;
-            height: 38px;
-            top: 14px;
-            right: 14px;
+        /* Mobile */
+        @media (max-width: 768px){
+          .education-row{
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
           }
-        }
         
-        .edu-meta{
-          color: var(--color-text-body);
-          font-size: 1rem;
-          margin-bottom: 1rem;
-        }
-        
-        .edu-bullets{
-          margin-left: 1.1rem;
-          color: var(--color-text-body);
-          font-size: 1rem;
-        }
-        
-        .edu-bullets li{
-          margin: 0.45rem 0;
+          .education-row img{
+            width: 42px;
+          }
         }
 
         #work {
@@ -851,32 +845,25 @@
       <div class="content-wrapper">
         <h1>Education.</h1>
         <h2>Training grounded in biomedical engineering and applied computation</h2>
-        <p class="about-intro">
-          My academic foundation combines biomedical engineering, sensing, and human-centered evaluation, with emphasis on translating complex physiological data into deployable systems.
-        </p>
     
-        <div class="edu-card">
-          <img class="edu-logo" src="Images/Logos/Purdue Logo.png" alt="Purdue University logo">
-          <h3>PhD, Biomedical Engineering</h3>
-          <div class="edu-meta">Purdue University</div>
-          <ul class="edu-bullets">
-            <li>Wearable inertial sensing and tremor quantification for Parkinson’s disease</li>
-            <li>Signal processing and machine learning for interpretable clinical metrics</li>
-            <li>Human subjects validation and clinician-aligned evaluation</li>
-          </ul>
-        </div>
+        <div class="education-list">
     
-          <div class="edu-card">
-            <h3>MS, Biomedical Engineering</h3>
-            <div class="edu-meta">Purdue University</div>
-            <ul class="edu-bullets">
-              <li>Augmented reality for surgical telementoring and decision support</li>
-              <li>Real-time visualization and human factors considerations in OR workflows</li>
-            </ul>
+          <div class="education-row">
+            <div class="education-text">
+              <strong>PhD, Biomedical Engineering</strong>, Purdue University (2026)
+            </div>
+            <img src="Images/Logos/purdue.png" alt="Purdue University Logo">
           </div>
+    
+          <div class="education-row">
+            <div class="education-text">
+              <strong>MS, Biomedical Engineering</strong>, Purdue University
+            </div>
+            <img src="Images/Logos/purdue.png" alt="Purdue University Logo">
+          </div>
+    
         </div>
       </div>
-        
     </section>
 
     <section id="contact" class="contact-section">
