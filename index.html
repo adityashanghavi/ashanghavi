@@ -340,6 +340,32 @@
           margin-bottom: 0.35rem;
           letter-spacing: -0.5px;
         }
+
+        .edu-card{
+          position: relative; /* needed for the badge positioning */
+        }
+        
+        /* Purdue logo badge */
+        .edu-logo{
+          position: absolute;
+          top: 18px;
+          right: 18px;
+          width: 44px;      /* tweak size here */
+          height: 44px;
+          object-fit: contain;
+          opacity: 0.95;
+          filter: drop-shadow(0 6px 16px rgba(0,0,0,0.35));
+        }
+        
+        /* Optional: shrink on very small screens */
+        @media (max-width: 540px){
+          .edu-logo{
+            width: 38px;
+            height: 38px;
+            top: 14px;
+            right: 14px;
+          }
+        }
         
         .edu-meta{
           color: var(--color-text-body);
@@ -741,11 +767,11 @@
       </a>
 
       <ul class="nav-links">
-        <li><a href="index.html#about">About</a></li>
-        <li><a href="index.html#work">Work</a></li>
-        <li><a href="index.html#education">Education</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#education">Education</a></li>
         <li><a href="Resume_AdityaShanghavi.pdf" target="_blank">CV</a></li>
-        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
   </nav>
@@ -829,16 +855,16 @@
           My academic foundation combines biomedical engineering, sensing, and human-centered evaluation, with emphasis on translating complex physiological data into deployable systems.
         </p>
     
-        <div class="edu-grid">
-          <div class="edu-card">
-            <h3>PhD, Biomedical Engineering</h3>
-            <div class="edu-meta">Purdue University</div>
-            <ul class="edu-bullets">
-              <li>Wearable inertial sensing and tremor quantification for Parkinson’s disease</li>
-              <li>Signal processing and machine learning for interpretable clinical metrics</li>
-              <li>Human subjects validation and clinician-aligned evaluation</li>
-            </ul>
-          </div>
+        <div class="edu-card">
+          <img class="edu-logo" src="Images/Logos/purdue.png" alt="Purdue University logo">
+          <h3>PhD, Biomedical Engineering</h3>
+          <div class="edu-meta">Purdue University</div>
+          <ul class="edu-bullets">
+            <li>Wearable inertial sensing and tremor quantification for Parkinson’s disease</li>
+            <li>Signal processing and machine learning for interpretable clinical metrics</li>
+            <li>Human subjects validation and clinician-aligned evaluation</li>
+          </ul>
+        </div>
     
           <div class="edu-card">
             <h3>MS, Biomedical Engineering</h3>
