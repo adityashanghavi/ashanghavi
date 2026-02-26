@@ -312,6 +312,51 @@
           padding: 6rem 5%;
         }
 
+        #education {
+          min-height: auto;
+          display: block;
+          padding: 6rem 5%;
+        }
+        
+        .edu-grid{
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+          gap: 2rem;
+          margin-top: 3rem;
+          text-align: left;
+        }
+        
+        .edu-card{
+          padding: 2.25rem;
+          background: var(--color-background-main);
+          border-radius: 18px;
+          box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+          border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .edu-card h3{
+          font-size: 1.35rem;
+          font-weight: 600;
+          margin-bottom: 0.35rem;
+          letter-spacing: -0.5px;
+        }
+        
+        .edu-meta{
+          color: var(--color-text-body);
+          font-size: 1rem;
+          margin-bottom: 1rem;
+        }
+        
+        .edu-bullets{
+          margin-left: 1.1rem;
+          color: var(--color-text-body);
+          font-size: 1rem;
+        }
+        
+        .edu-bullets li{
+          margin: 0.45rem 0;
+        }
+
         #work {
           min-height: auto;
           display: block;
@@ -773,6 +818,37 @@
                 </div>
             </div>
         </div>
+    </section>
+
+    <section id="education">
+      <div class="content-wrapper">
+        <h1>Education.</h1>
+        <h2>Training grounded in biomedical engineering and applied computation</h2>
+        <p class="about-intro">
+          My academic foundation combines biomedical engineering, sensing, and human-centered evaluation, with emphasis on translating complex physiological data into deployable systems.
+        </p>
+    
+        <div class="edu-grid">
+          <div class="edu-card">
+            <h3>PhD, Biomedical Engineering</h3>
+            <div class="edu-meta">Purdue University</div>
+            <ul class="edu-bullets">
+              <li>Wearable inertial sensing and tremor quantification for Parkinson’s disease</li>
+              <li>Signal processing and machine learning for interpretable clinical metrics</li>
+              <li>Human subjects validation and clinician-aligned evaluation</li>
+            </ul>
+          </div>
+    
+          <div class="edu-card">
+            <h3>MS, Biomedical Engineering</h3>
+            <div class="edu-meta">Purdue University</div>
+            <ul class="edu-bullets">
+              <li>Augmented reality for surgical telementoring and decision support</li>
+              <li>Real-time visualization and human factors considerations in OR workflows</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section id="contact" class="contact-section">
