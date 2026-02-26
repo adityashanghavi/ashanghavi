@@ -18,6 +18,33 @@
       --font-display: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
     }
 
+    .title-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    
+    .project-logo {
+      height: 60px;
+      width: auto;
+      object-fit: contain;
+    }
+    
+    /* Mobile responsiveness */
+    @media (max-width: 768px) {
+      .title-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    
+      .project-logo {
+        height: 45px;
+        margin-top: 0.5rem;
+      }
+    }
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: var(--font-display);
@@ -93,25 +120,6 @@
       font-size: 1.1rem;
       max-width: 850px;
       margin-bottom: 2.5rem;
-    }
-
-    .company-logo {
-      margin: 0.75rem 0 1.75rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .company-logo img {
-      height: 55px;
-      width: auto;
-      object-fit: contain;
-      filter: brightness(0.95);
-    }
-
-    .company-logo span {
-      color: var(--color-text-body);
-      font-size: 0.95rem;
     }
 
     .highlights {
