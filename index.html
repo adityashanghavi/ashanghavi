@@ -1,1102 +1,388 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aditya Shanghavi</title>
-    
-    <!-- <img class="logo-image" src="Images/Logos/Logo.png" alt="Logo"> -->
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script> 
-    <script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r128/examples/js/loaders/GLTFLoader.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aditya Shanghavi</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Style+Script&display=swap" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css2?family=Style+Script&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
 
-    <style>
-        :root {
-            --color-primary: #e890be; 
-            --color-background-main: #172D33; 
-            --color-background-secondary: #47304F; 
-            --color-text-dark: #FFFFED;       
-            --color-text-body: #A294A6;       
-            --color-text-light: #641E4F;       
-            --color-white: #FFFBEB;           
-            --font-display: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: var(--font-display);
-            line-height: 1.6;
-            color: var(--color-text-dark);
-            background: var(--color-background-main);
-            overflow-x: hidden;
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .brain-background {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100vw;
-            height: 100vh;
-            z-index: 0;
-            pointer-events: none;
-        }
-        #brain-container {
-            opacity: 0.08; 
-        }
-        .contact-3d-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.5s;
-        }
-        #contact.active .contact-3d-background {
-            opacity: 0.15;
-        }
-        
-        /* --- NAVIGATION --- */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(23, 45, 51, 0.85);
-            backdrop-filter: saturate(180%) blur(20px);
-            padding: 1.2rem 5%;
-            z-index: 1000;
-            border-bottom: 0.5px solid rgba(255,255,255,0.1);
-        }
-        .nav-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .logo-link {
-            display: flex;
-            flex-direction: row; 
-            align-items: center;
-            text-decoration: none;
-            line-height: 1; 
-            gap: 0.75rem;
-        }
-        .logo-image {
-            height: 55px; 
-            width: auto;
-            transition: opacity 0.3s;
-        }
-        .full-name {
-            font-family: 'Style Script', cursive; 
-            font-size: 1.5rem;
-            font-weight: 400; 
-            color: var(--color-text-dark);
-            margin-top: 0;
-            letter-spacing: 0.5px;
-        }
-        .nav-links {
-            display: flex;
-            gap: 3rem;
-            list-style: none;
-            align-items: center;
-        }
-        .nav-links a {
-            color: var(--color-text-dark);
-            text-decoration: none;
-            transition: color 0.3s; 
-            font-size: 0.875rem;
-            font-weight: 400;
-            position: relative;
-            display: block;
-            padding: 0.5rem 0;
-        }
-        
-        .nav-links a:hover,
-        .nav-links a:focus {
-            color: var(--color-primary);
-        }
+  <style>
+    /* Page specific layout on top of styles.css */
 
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--color-primary);
-            transition: width 0.3s ease;
-        }
-        
-        .nav-links a:hover::after,
-        .nav-links a:focus::after {
-            width: 100%;
-        }
-
-        /* Dropdown Menu */
-        .dropdown {
-            position: relative;
-        }
-
-        .dropdown-toggle {
-            cursor: pointer;
-        }
-
-        .dropdown-menu {
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(23, 45, 51, 0.95);
-            backdrop-filter: saturate(180%) blur(20px);
-            border: 1px solid rgba(232, 144, 190, 0.2);
-            border-radius: 12px;
-            padding: 0.5rem 0;
-            min-width: 200px;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
-            transform: translateX(-50%) translateY(-10px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-            margin-top: 0.5rem;
-        }
-
-        .dropdown:hover .dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateX(-50%) translateY(0);
-        }
-
-        .dropdown-menu li {
-            list-style: none;
-        }
-
-        .dropdown-menu a {
-            padding: 0.75rem 1.5rem;
-            display: block;
-            white-space: nowrap;
-            transition: background 0.2s ease;
-        }
-
-        .dropdown-menu a::after {
-            display: none;
-        }
-
-        .dropdown-menu a:hover {
-            background: rgba(232, 144, 190, 0.1);
-        }
-        
-        /* --- SECTIONS & TYPOGRAPHY --- */
-        section {
-            position: relative;
-            z-index: 1;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 8rem 5%;
-        }
-        #contact {
-            min-height: auto;      /* removes 100vh */
-            display: block;        /* removes flex centering */
-            padding: 4rem 5%;      /* smaller vertical space */
-        }
-        .content-wrapper {
-            max-width: 980px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        h1 {
-            font-size: 5rem;
-            font-weight: 600;
-            letter-spacing: -3px;
-            margin-bottom: 1.5rem;
-            color: var(--color-text-dark);
-            line-height: 1.05;
-            animation: fadeInUp 0.8s ease;
-        }
-        h2 {
-            font-size: 3.5rem;
-            font-weight: 600;
-            letter-spacing: -2px;
-            margin-bottom: 2rem;
-            color: var(--color-text-dark);
-            line-height: 1.1;
-        }
-        .subtitle {
-            font-size: 1.75rem;
-            font-weight: 400;
-            color: var(--color-text-body);
-            margin-bottom: 3rem;
-            line-height: 1.4;
-        }
-        .subtitle a {
-            color: var(--color-primary);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        .subtitle a:hover {
-            color: #e0609d;
-        }
-
-        .center-title {
-            text-align: center;
-        }
-
-        .about-intro {
-          font-size: 1.25rem;
-          color: var(--color-text-body);
-          line-height: 1.6;
-          max-width: 700px;
-          margin: 0 auto 3rem;
-          text-align: center;
-        }
-        
-        /* ===== HERO SECTION ===== */
-        
-        #hero {
-            min-height: auto;              /* Overrides global 100vh */
-            padding: 115px 8% 40px;        /* Tight vertical spacing */
-            display: block;                /* Prevents vertical centering */
-        }
-        
-        #hero .content-wrapper{
-          max-width: 1200px;
-          display: grid;
-          grid-template-columns: 1fr 260px; /* text | image column */
-          align-items: center;
-          column-gap: 28px;                 /* controls the gap */
-          text-align: left;
-        }
-        
-        /* Keep your text from stretching weirdly */
-        #hero .hero-text{
-          max-width: none;  /* grid controls width now */
-        }
-        
-        /* Make image container align to the right edge of its column */
-        #hero .hero-image{
-          justify-self: end;
-        }
-        
-        /* your existing image size is fine */
-        .hero-image img {
-            border-radius: 16px;
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
-        }
-
-        #about {
-          min-height: auto;
-          display: block;
-          padding: 6rem 5%;
-        }
-
-        #education {
-          min-height: auto;
-          display: block;
-          padding: 6rem 5%;
-        }
-        
-        .education-list{
-          margin-top: 3rem;
-          display: flex;
-          flex-direction: column;
-          gap: 1.5rem;
-        }
-
-        .education-list{
-          max-width: 760px;   /* tighter than 980 */
-          margin: 3rem auto 0;
-        }
-
-        .education-text{
-          display: flex;
-          align-items: baseline;
-          gap: 0.35rem;
-          text-align: left;      /* looks cleaner for single rows */
-          flex: 1;
-          min-width: 0;          /* enables ellipsis if needed */
-        }
-        
-        .education-row img{
-          flex: 0 0 auto;        /* prevents shrinking */
-        }
-        
-        .education-row{
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 1.25rem 0;
-          border-bottom: 1px solid rgba(255,255,255,0.08);
-        }
-        
-        .education-text{
-          font-size: 1.2rem;
-          color: var(--color-text-dark);
-          letter-spacing: -0.3px;
-        }
-        
-        .education-row img{
-          width: 48px;
-          height: auto;
-          object-fit: contain;
-          opacity: 0.9;
-        }
-        
-        /* Mobile */
-        @media (max-width: 768px){
-          .education-row{
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 1rem;
-          }
-        
-          .education-row img{
-            width: 42px;
-          }
-        }
-
-        #work {
-          min-height: auto;
-          display: block;
-          padding: 6rem 5%;
-        }
-        
-        #hero h1 {
-            font-size: 3rem;
-            margin: 0 0 0.75rem 0;         /* Remove default top margin */
-            line-height: 1.1;
-        }
-        
-        #hero .subtitle {
-            font-size: 1.1rem;
-            color: var(--color-text-body);
-            line-height: 1.6;
-            margin: 0;                     /* Removes the 3rem bottom gap */
-        }
-        
-        .hero-image img {
-            width: 214px;
-            border-radius: 16px;
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
-        }
-        
-        /* --- BUTTONS --- */
-        .cta-button {
-            display: inline-block;
-            padding: 0.875rem 2rem;
-            background: var(--color-primary);
-            color: var(--color-background-main);
-            text-decoration: none;
-            border-radius: 980px;
-            font-size: 1.0625rem;
-            font-weight: 400;
-            transition: background 0.3s;
-            letter-spacing: -0.2px;
-        }
-        .cta-button:hover {
-            background: #e0609d;
-        }
-        .secondary-button {
-            display: inline-block;
-            padding: 0.875rem 2rem;
-            background: transparent;
-            color: var(--color-primary);
-            text-decoration: none;
-            border-radius: 980px;
-            font-size: 1.0625rem;
-            font-weight: 400;
-            border: 1px solid var(--color-primary);
-            transition: all 0.3s;
-            margin-left: 1rem;
-            letter-spacing: -0.2px;
-        }
-        .secondary-button:hover {
-            background: var(--color-primary);
-            color: var(--color-background-main);
-        }
-        
-        /* --- CARDS & GRIDS --- */
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 4rem;
-            text-align: left;
-        }
-        .feature-card {
-            padding: 2.5rem;
-            background: var(--color-background-main);
-            border-radius: 18px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.4);
-            border: 1px solid rgba(255,255,255,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .feature-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.6);
-        }
-        .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: var(--color-primary);
-        }
-        .feature-card h3 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-            color: var(--color-text-dark);
-            letter-spacing: -0.5px;
-        }
-        .feature-card p {
-            font-size: 1rem;
-            color: var(--color-text-body);
-            line-height: 1.5;
-        }
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 3rem;
-            margin-top: 4rem;
-            text-align: left;
-        }
-        .project-card {
-            background: var(--color-background-main);
-            border-radius: 18px;
-            overflow: hidden;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.4);
-            border: 1px solid rgba(255,255,255,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-            text-align: left;
-        }
-        .project-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 32px rgba(0,0,0,0.6);
-        }
-        .project-image{
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        
-          text-align: center;     /* centers wrapped lines */
-          padding: 1.25rem;       /* gives breathing room */
-          line-height: 1.25;      /* tighter for a title block */
-          flex-wrap: wrap;        /* allows wrapping */
-          word-break: break-word; /* prevents overflow */
-          font-size: 1.6rem;      /* optional: your 2.5rem is huge for long text */
-        }
-        .project-content {
-            padding: 2rem;
-        }
-        .project-content h3 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--color-text-dark);
-            letter-spacing: -0.5px;
-        }
-        .project-content p {
-            color: var(--color-text-body);
-            margin-bottom: 1.5rem;
-            font-size: 1rem;
-            line-height: 1.5;
-        }
-        .project-link {
-            color: var(--color-primary);
-            text-decoration: none;
-            font-weight: 400;
-            transition: opacity 0.3s;
-            font-size: 1rem;
-        }
-        .project-link:hover {
-            opacity: 0.6;
-        }
-        
-        /* --- CONTACT & FOOTER --- */
-        .contact-section {
-            background: var(--color-background-secondary);
-            position: relative;
-            overflow: hidden;
-        }
-        .contact-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-            margin-top: 3rem;
-        }
-        .contact-link {
-            padding: 0.875rem 2rem;
-            background: var(--color-primary);
-            color: var(--color-background-main); 
-            text-decoration: none;
-            border-radius: 980px;
-            font-size: 1.0625rem;
-            font-weight: 400;
-            transition: background 0.3s;
-            letter-spacing: -0.2px;
-        }
-        .contact-link:hover {
-            background: #e0609d;
-        }
-        footer {
-            background: var(--color-background-secondary);
-            color: var(--color-text-body);
-            text-align: center;
-            padding: 3rem 5%;
-            font-size: 0.875rem;
-            border-top: 0.5px solid rgba(255,255,255,0.1);
-        }
-        @media (max-width: 1100px) {
-            nav {
-                padding: 1rem 1.25rem;
-            }
-
-            .nav-content {
-                flex-wrap: wrap;
-                gap: 1rem;
-            }
-
-            .nav-links {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 1.25rem;
-            }
-
-            section {
-                padding: 7rem 5%;
-            }
-
-            #hero {
-              padding: 60px 5% 30px;
-            }
-            
-            #hero .content-wrapper { column-gap: 20px; }
-            
-        }
-
-      @media (max-width: 768px) {
-      h1 {
-        font-size: 3rem;
-        letter-spacing: -1.5px;
-      }
-      h2 {
-        font-size: 2.5rem;
-        letter-spacing: -1px;
-      }
-      .subtitle {
-        font-size: 1.25rem;
-      }
-      .nav-links {
-        gap: 1.5rem;
-      }
-      .brain-background {
-        width: 500px;
-        height: 500px;
-      }
-      section {
-        padding: 5.5rem 1.5rem;
-      }
-      .secondary-button {
-        margin-left: 0;
-        margin-top: 1rem;
-      }
-    
-      nav {
-        position: sticky;
-      }
-    
-      .nav-content {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 0.5rem 1rem;
-        width: 100%;
-      }
-    
-      .nav-links {
-        width: 100%;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 0.5rem 1rem;
-      }
-    
-      .nav-links a {
-        padding: 0.25rem 0;
-        text-align: center;
-      }
-    
-      #hero {
-        padding: 50px 1.5rem 25px;
-      }
-    
-      /* HERO grid -> stacked on mobile */
-      #hero .content-wrapper {
-        grid-template-columns: 1fr;
-        justify-items: center;
-        text-align: center;
-        row-gap: 24px;
-      }
-    
-      #hero .hero-image {
-        justify-self: center;
-      }
-    
-      /* these belonged inside the media query */
-      #hero .hero-image img {
-          width: 220px;
-          margin-top: 24px;
-        }
+    /* Make the page feel “resume-like” */
+    main{
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 5.5rem 5% 4rem;
     }
 
-        @media (max-width: 540px) {
-            body {
-                font-size: 0.95rem;
-            }
+    /* Hero */
+    .hero{
+      padding-top: 1.5rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      text-align: left;
+    }
 
-            h1 {
-                font-size: 2.4rem;
-            }
+    .hero h1{
+      font-size: 3.2rem;
+      letter-spacing: -1.6px;
+      margin-bottom: 0.75rem;
+    }
 
-            .feature-grid {
-                grid-template-columns: 1fr;
-            }
+    .hero-subtitle{
+      color: var(--color-text-body);
+      font-size: 1.1rem;
+      max-width: 900px;
+    }
 
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
+    .hero-actions{
+      margin-top: 1.5rem;
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
 
-            #hero {
-              padding: 45px 1.25rem 20px;
-            }
-            
-            #hero .hero-image img {
-              width: 200px;
-            }
-        }
-        /* Make hero-text paragraph styling (not the hero layout container) */
-        p.hero-text {
-          font-size: 1.25rem;
-          color: var(--color-text-body);
-          line-height: 1.6;
-          max-width: 700px;
-          margin: 0.75rem auto 0;
-          text-align: center;
-        }
-        
-        /* Force contact paragraph to not inherit hero layout constraints */
-        #contact p.hero-text{
-          flex: none;
-          max-width: 700px;
-          width: 100%;
-          text-align: center;
-          margin: 0.75rem auto 0;
-        }
- /* Shared icon button style */
-        .contact-links a {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          gap: 0.6rem;
-          width: 52px;
-          height: 52px;
-          border-radius: 10px;
-          text-decoration: none;
-          transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
-        }
-        
-        /* LinkedIn */
-        .linkedin-button {
-          background: #0A66C2;
-          box-shadow: 0 6px 20px rgba(10, 102, 194, 0.25);
-        }
-        .linkedin-button:hover {
-          background: #004182;
-          transform: translateY(-3px);
-          box-shadow: 0 10px 28px rgba(10, 102, 194, 0.35);
-        }
-        
-        /* Email */
-        .email-button {
-          background: #e890be; /* matches your site accent */
-          box-shadow: 0 6px 20px rgba(232, 144, 190, 0.25);
-        }
-        .email-button:hover {
-          background: #e0609d;
-          transform: translateY(-3px);
-          box-shadow: 0 10px 28px rgba(232, 144, 190, 0.35);
-        }
-        
-    </style>
+    .btn{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.7rem 1.1rem;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 0.95rem;
+      border: 1px solid rgba(232,144,190,0.35);
+      background: rgba(232,144,190,0.08);
+      color: var(--color-text-dark);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .btn:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.35);
+      background: rgba(232,144,190,0.14);
+    }
+
+    .btn-primary{
+      background: var(--color-primary);
+      color: var(--color-background-main);
+      border: 1px solid rgba(232,144,190,0.5);
+    }
+
+    .btn-primary:hover{
+      background: #e0609d;
+    }
+
+    /* Section blocks */
+    .section{
+      padding: 2.5rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .section:last-child{
+      border-bottom: none;
+    }
+
+    .section h2{
+      font-size: 1.35rem;
+      letter-spacing: -0.4px;
+      margin-bottom: 0.75rem;
+    }
+
+    .section p{
+      color: var(--color-text-body);
+      max-width: 920px;
+    }
+
+    /* Projects grid */
+    .grid{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .card-link{
+      display: block;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .card{
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 16px;
+      padding: 1.1rem;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      height: 100%;
+    }
+
+    .card:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.45);
+    }
+
+    .card-title{
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .card-title h3{
+      font-size: 1.05rem;
+      letter-spacing: -0.3px;
+      margin: 0;
+    }
+
+    .chip{
+      font-size: 0.8rem;
+      color: var(--color-text-dark);
+      border: 1px solid rgba(232,144,190,0.35);
+      background: rgba(232,144,190,0.08);
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .card p{
+      margin: 0.4rem 0 0;
+      color: var(--color-text-body);
+      font-size: 0.95rem;
+    }
+
+    /* Two column lists (experience, education) */
+    .rows{
+      display: grid;
+      gap: 0.9rem;
+      margin-top: 1rem;
+    }
+
+    .row{
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.9rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .row:last-child{
+      border-bottom: none;
+    }
+
+    .row-left{
+      min-width: 0;
+    }
+
+    .row-title{
+      font-size: 1rem;
+      margin: 0;
+    }
+
+    .row-meta{
+      margin-top: 0.2rem;
+      color: var(--color-text-body);
+      font-size: 0.92rem;
+    }
+
+    .row-right{
+      color: var(--color-text-body);
+      font-size: 0.92rem;
+      white-space: nowrap;
+    }
+
+    /* Footer */
+    .site-footer{
+      margin-top: 2.5rem;
+      color: var(--color-text-body);
+      font-size: 0.9rem;
+      text-align: center;
+      padding: 2.5rem 5%;
+      border-top: 0.5px solid rgba(255,255,255,0.1);
+      background: var(--color-background-secondary);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .grid{ grid-template-columns: 1fr; }
+      .hero h1{ font-size: 2.4rem; }
+      main{ padding-top: 4.25rem; }
+      .row{ flex-direction: column; }
+      .row-right{ white-space: normal; }
+    }
+  </style>
 </head>
-<body>
-    <div id="brain-container" class="brain-background"></div>
-    <div id="contact-3d" class="contact-3d-background"></div>
 
-    <nav>
+<body>
+  <nav>
     <div class="nav-content">
       <a class="logo-link" href="index.html">
-        <!-- <img class="logo-image" src="Images/Logos/Logo.png" alt="Logo"> -->
         <span class="full-name">Aditya Shanghavi</span>
       </a>
 
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
-        <li><a href="#work">Work</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
         <li><a href="#education">Education</a></li>
-        <li><a href="Resume_AdityaShanghavi.pdf" target="_blank">CV</a></li>
+        <li><a href="Resume_AdityaShanghavi.pdf" target="_blank" rel="noopener noreferrer">CV</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
   </nav>
 
-    <section id="hero">
-        <div class="content-wrapper">
-            <div class="hero-text">
-                <h1>Engineering Human-Centered Intelligence.</h1>
-                <p class="subtitle">
-                    Interdisciplinary Biomedical Scientist | AI/ML • Sensor Systems • Human-Centered Design | Advancing Digital Health.
-                </p>
-            </div>
-    
-            <div class="hero-image">
-                <img src="Images/04.jpg" alt="Aditya Shanghavi">
-            </div>
-        </div>
+  <main>
+    <!-- HERO -->
+    <header class="hero">
+      <h1>Engineering Human Centered Intelligence</h1>
+      <p class="hero-subtitle">
+        Interdisciplinary biomedical scientist focused on AI and ML, sensor systems, and human centered design to advance digital health and high consequence operational performance.
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#projects">View projects</a>
+        <a class="btn" href="Resume_AdityaShanghavi.pdf" target="_blank" rel="noopener noreferrer">Open CV</a>
+        <a class="btn" href="https://www.linkedin.com/in/ashanghavi/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a class="btn" href="mailto:adityashanghavi@gmail.com">Email</a>
+      </div>
+    </header>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <h2>About</h2>
+      <p>
+        I build and evaluate AI enabled systems that translate physiological and behavioral signals into actionable insight.
+        My work spans multimodal sensing, time series modeling, and usability focused validation in clinical and operational settings.
+      </p>
     </section>
 
-    <section id="about">
-        <div class="content-wrapper">
-            <h2>Exploring, Creating, Discovering.</h2>
-            <p class="about-intro">I’m inspired by exploration and shared human experiences, seeking out new cultures, cuisines, and environments that challenge perspective and spark creativity.</p>
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <div class="feature-icon" style="font-style: normal;">Travel</div>
-                    <p>For me, travel is about curiosity and connection - hitting the road, discovering new cultures, meeting new people, and experiencing the world firsthand.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon" style="font-style: normal;">Food</div>
-                    <p>Food is one of my favorite ways to experience the world. From experimenting in my own kitchen to discovering new restaurants, I’m always chasing bold flavors and new culinary perspectives.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon" style="font-style: normal;">Research</div>
-                    <p>My research focuses on human-centered AI that transforms physiological data into clinically and operationally meaningful insights.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
+      <h2>Projects</h2>
+      <p>
+        Selected work across fatigue, immersive training, digital health, surgical robotics, and augmented reality systems.
+      </p>
 
-    <section id="work">
-        <div class="content-wrapper">
-            <h1>Featured Work.</h1>
-            <h2>Innovation begins with curiosity about people -  their limits, their variability, and their potential</h2>
-            <p class="about-intro">I’m driven by the intersection of health technology and intelligent systems, exploring how physiological signals and behavioral data can inform adaptive, human-centered design. My work bridges biomedical engineering, AI, and usability science to build systems that are both clinically rigorous and operationally practical.</p>
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <h3 class="center-title">Multimodal Fatigue Detection and Management System</h3>
-                    <p>Investigating AI-enabled immersive VR training platforms for emergency response, emphasizing realistic simulation, adaptive feedback, and rigorous human-centered evaluation to optimize training outcomes.</p>
-                    <a href="Fatigue.html" class="project-link">View Project →</a>
-                </div>
-                <div class="feature-card">
-                    <h3 class="center-title">VR Interface to Improve Police Training</h3>
-                    <p>Exploring multimodal sensing and machine learning to model cognitive load, fatigue, and stress in operational environments, with emphasis on adaptive feedback and human-centered system design.</p>
-                    <a href="LEARNER.html" class="project-link">View Project →</a>
-                </div>
-                <div class="feature-card">
-                    <h3 class="center-title">Digital Parkinson’s Tremor Quantification</h3>
-                    <p>Investigating objective, sensor-based quantification of Parkinson’s disease tremor, focusing on signal extraction, severity estimation, and reducing inter-clinician variability.</p>
-                    <a href="PhD.html" class="project-link">View Project →</a>
-                </div>
-                <div class="feature-card">
-                    <h3 class="center-title">Human-Centered Surgical Tools</h3>
-                    <p>Advancing surgical robotics and energy-based medical devices from concept to clinical deployment, emphasizing system reliability, risk management, and human-centered interface design.</p>
-                    <a href="USMI.html" class="project-link">View Project →</a>
-                </div>
-                <div class="feature-card">
-                    <h3 class="center-title">Augmented Reality for Surgical Telementoring</h3>
-                    <p>Developing augmented reality surgical tele-mentoring systems that integrate real-time visualization and remote expertise to enhance procedural accuracy and decision support in thoracotomy surgery.</p>
-                    <a href="Masters.html" class="project-link">View Project →</a>
-                </div>
+      <div class="grid">
+        <a class="card-link" href="Fatigue.html">
+          <div class="card">
+            <div class="card-title">
+              <h3>Multimodal Fatigue Detection and Management System</h3>
+              <span class="chip">Wearables</span>
             </div>
-        </div>
-    </section>
-
-    <section id="education">
-      <div class="content-wrapper">
-        <h1>Education.</h1>
-        <h2>Training grounded in biomedical engineering and applied computation</h2>
-    
-        <div class="education-list">
-    
-          <div class="education-row">
-            <div class="education-text">
-              <strong>PhD, Biomedical Engineering</strong>, Purdue University (2026)
-            </div>
-            <img src="Images/Logos/Purdue Logo.png" alt="Purdue University Logo">
+            <p>Longitudinal fatigue and stress modeling using wearable physiology, self reports, and context signals for high stress roles.</p>
           </div>
-    
-          <div class="education-row">
-            <div class="education-text">
-              <strong>MS, Biomedical Engineering</strong>, Purdue University
+        </a>
+
+        <a class="card-link" href="LEARNER.html">
+          <div class="card">
+            <div class="card-title">
+              <h3>VR Interface to Improve Police Training</h3>
+              <span class="chip">XR + LLMs</span>
             </div>
-            <img src="Images/Logos/Purdue Logo.png" alt="Purdue University Logo">
+            <p>NSF funded immersive training platform with LLM powered NPCs, behavioral logging, and human factors evaluation.</p>
           </div>
-    
+        </a>
+
+        <a class="card-link" href="PhD.html">
+          <div class="card">
+            <div class="card-title">
+              <h3>Digital Parkinson’s Tremor Quantification</h3>
+              <span class="chip">Digital health</span>
+            </div>
+            <p>Wearable IMU based tremor quantification and severity estimation aligned to clinical scales and neurologist feedback.</p>
+          </div>
+        </a>
+
+        <a class="card-link" href="USMI.html">
+          <div class="card">
+            <div class="card-title">
+              <h3>Human Centered Surgical Tools</h3>
+              <span class="chip">Med devices</span>
+            </div>
+            <p>Design controls, risk management, verification and validation, and patents across surgical robotics and energy devices.</p>
+          </div>
+        </a>
+
+        <a class="card-link" href="Masters.html">
+          <div class="card">
+            <div class="card-title">
+              <h3>Augmented Reality for Surgical Telementoring</h3>
+              <span class="chip">AR</span>
+            </div>
+            <p>Transparent display telementoring with in field annotations to reduce attention shifts and support real workflows.</p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="section">
+      <h2>Experience</h2>
+
+      <div class="rows">
+        <div class="row">
+          <div class="row-left">
+            <p class="row-title"><strong>Research Scientist</strong>, NeuroErgonomics Labs</p>
+            <div class="row-meta">Multimodal sensing, AI and ML pipelines, XR evaluation, human factors methods</div>
+          </div>
+          <div class="row-right">Current</div>
+        </div>
+
+        <div class="row">
+          <div class="row-left">
+            <p class="row-title"><strong>Project Lead</strong>, US Medical Innovations</p>
+            <div class="row-meta">Surgical robotics and energy devices, standards and design controls, patents</div>
+          </div>
+          <div class="row-right">Previously</div>
         </div>
       </div>
     </section>
 
-    <section id="contact" class="contact-section">
-        <div class="content-wrapper">
-            <h2>Let's connect.</h2>
-            <p class="hero-text">Interested in collaboration or have questions about my work?</p>
-            <div class="contact-links">
-                <a href="https://www.linkedin.com/in/ashanghavi/" 
-                   class="linkedin-button" 
-                   target="_blank" 
-                   aria-label="LinkedIn">
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" 
-                         viewBox="0 0 24 24" 
-                         width="22" 
-                         height="22" 
-                         fill="white">
-                        <path d="M20.45 20.45h-3.55v-5.56c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM3.57 9h3.55v11.45H3.57V9zM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0z"/>
-                    </svg>
-                </a>
-                <a href="mailto:adityashanghavi@gmail.com"
-                   class="email-button"
-                   aria-label="Email">
-                  <svg xmlns="http://www.w3.org/2000/svg"
-                       viewBox="0 0 24 24"
-                       width="22"
-                       height="22"
-                       fill="white">
-                    <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
-                  </svg>
-                </a>
-            </div>
+    <!-- EDUCATION -->
+    <section id="education" class="section">
+      <h2>Education</h2>
+
+      <div class="rows">
+        <div class="row">
+          <div class="row-left">
+            <p class="row-title"><strong>PhD, Biomedical Engineering</strong>, Purdue University</p>
+            <div class="row-meta">Wearable sensing and machine learning for Parkinson’s disease assessment</div>
+          </div>
+          <div class="row-right">2024 to 2026</div>
         </div>
+
+        <div class="row">
+          <div class="row-left">
+            <p class="row-title"><strong>MS, Biomedical Engineering</strong>, Purdue University</p>
+            <div class="row-meta">Augmented reality systems for surgical telementoring</div>
+          </div>
+          <div class="row-right">Earlier</div>
+        </div>
+      </div>
     </section>
 
-    <footer>
-        <p>&copy; 2026 Aditya Shanghavi. All Rights Reserved.</p>
-    </footer>
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+      <h2>Contact</h2>
+      <p>
+        Interested in collaboration, consulting, or research partnerships.
+      </p>
 
-    <script>
-        // --- 1. BRAIN BACKGROUND (Loads GLB file) ---
-        const brainContainer = document.getElementById('brain-container');
-        const brainScene = new THREE.Scene();
-        const brainCamera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 100); 
-        const brainRenderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+      <div class="hero-actions" style="margin-top: 1rem;">
+        <a class="btn btn-primary" href="mailto:adityashanghavi@gmail.com">Email</a>
+        <a class="btn" href="https://www.linkedin.com/in/ashanghavi/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a class="btn" href="Resume_AdityaShanghavi.pdf" target="_blank" rel="noopener noreferrer">CV</a>
+      </div>
+    </section>
+  </main>
 
-        brainRenderer.setSize(window.innerWidth, window.innerHeight);
-        brainRenderer.setClearColor(0x000000, 0);
-        brainContainer.appendChild(brainRenderer.domElement);
-
-        const brainGroup = new THREE.Group();
-        brainScene.add(brainGroup);
-
-        const centerBrainModel = (model) => {
-            const box = new THREE.Box3().setFromObject(model);
-            const center = new THREE.Vector3();
-            box.getCenter(center);
-            model.position.sub(center);
-        };
-
-        const updateBrainScale = () => {
-            const width = window.innerWidth;
-            let scale = 0.9;
-            let cameraZ = 10;
-
-            if (width <= 480) {
-                scale = 0.6;
-                cameraZ = 13;
-            } else if (width <= 768) {
-                scale = 0.75;
-                cameraZ = 11.5;
-            }
-
-            brainGroup.scale.set(scale, scale, scale);
-            brainCamera.position.z = cameraZ;
-        };
-        updateBrainScale();
-
-        const brainAmbient = new THREE.AmbientLight(0xffffff, 1.2); 
-        brainScene.add(brainAmbient);
-
-        const brainLight1 = new THREE.DirectionalLight(0xffffff, 1.5); 
-        brainLight1.position.set(5, 5, 5);
-        brainScene.add(brainLight1);
-
-        brainCamera.position.z = 10;
-        let brainScrollRotation = 0;
-        let loadedBrainModel; 
-        
-        const visibleMaterial = new THREE.MeshBasicMaterial({
-            color: 0xA294A6,
-            wireframe: true,
-            transparent: true,
-            opacity: 0.85
-        });
-
-        function initGLTFLoader() {
-            if (typeof THREE.GLTFLoader === 'undefined') {
-                if (initGLTFLoader.attempts > 10) {
-                    return; 
-                }
-                
-                initGLTFLoader.attempts = (initGLTFLoader.attempts || 0) + 1;
-                setTimeout(initGLTFLoader, 100);
-                return;
-            }
-
-            const loader = new THREE.GLTFLoader();
-
-            loader.load(
-                '/models/uploads-files-2145984-brain.glb',
-                function (gltf) {
-                    loadedBrainModel = gltf.scene;
-                    
-                    loadedBrainModel.traverse((child) => {
-                        if (child.isMesh) {
-                            child.material = visibleMaterial;
-                        }
-                    });
-                    
-                    loadedBrainModel.scale.set(8, 8, 8);
-                    loadedBrainModel.rotation.set(0, Math.PI / 4, 0); 
-                    loadedBrainModel.position.set(0, 0, 0);
-
-                    brainGroup.add(loadedBrainModel);
-                    centerBrainModel(loadedBrainModel);
-                    updateBrainScale();
-                    animate(); 
-                },
-                function (xhr) {},
-                function (error) {
-                    console.error('An error occurred loading the GLB model:', error);
-                }
-            );
-        }
-
-        window.onload = function() {
-            initGLTFLoader();
-        };
-        
-        function animate() {
-            requestAnimationFrame(animate);
-            
-            if (loadedBrainModel) {
-                loadedBrainModel.rotation.y = brainScrollRotation * 0.5; 
-                loadedBrainModel.rotation.x = Math.sin(brainScrollRotation * 0.3) * 0.1;
-            }
-            
-            brainRenderer.render(brainScene, brainCamera);
-            
-            sphereGroup.rotation.y += 0.005;
-            sphereGroup.rotation.x = Math.sin(Date.now() * 0.0005) * 0.1;
-            contactRenderer.render(contactScene, contactCamera);
-        }
-
-        // --- 2. CONTACT PAGE 3D SPHERE ---
-        const contactContainer = document.getElementById('contact-3d');
-        const contactScene = new THREE.Scene();
-        const contactCamera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 100);
-        const contactRenderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-
-        contactRenderer.setSize(window.innerWidth, window.innerHeight);
-        contactRenderer.setClearColor(0x000000, 0);
-        contactContainer.appendChild(contactRenderer.domElement);
-
-        const sphereGroup = new THREE.Group();
-
-        const contactGeometry = new THREE.IcosahedronGeometry(3, 1);
-        const contactMaterial = new THREE.MeshPhongMaterial({
-            color: 0x0071e3, 
-            wireframe: true, 
-            shininess: 50
-        });
-
-        const contactSphere = new THREE.Mesh(contactGeometry, contactMaterial);
-        sphereGroup.add(contactSphere);
-        contactScene.add(sphereGroup);
-
-        const contactAmbient = new THREE.AmbientLight(0xffffff, 0.8);
-        contactScene.add(contactAmbient);
-
-        contactCamera.position.z = 8;
-
-        // --- 3. EVENT HANDLERS ---
-        window.addEventListener('scroll', () => {
-            brainScrollRotation = window.scrollY * 0.0008;
-            
-            const contactSection = document.getElementById('contact');
-            if (contactSection) {
-                const rect = contactSection.getBoundingClientRect();
-                const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
-                
-                if (isVisible) {
-                    contactSection.classList.add('active');
-                } else {
-                    contactSection.classList.remove('active');
-                }
-            }
-        });
-        
-        window.addEventListener('resize', () => {
-            brainCamera.aspect = window.innerWidth / window.innerHeight;
-            brainCamera.updateProjectionMatrix();
-            brainRenderer.setSize(window.innerWidth, window.innerHeight);
-            updateBrainScale();
-            
-            contactCamera.aspect = window.innerWidth / window.innerHeight;
-            contactCamera.updateProjectionMatrix();
-            contactRenderer.setSize(window.innerWidth, window.innerHeight);
-        });
-        
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                if (this.getAttribute('href').startsWith('#') && this.getAttribute('href') !== '#') { 
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                }
-            });
-        });
-
-        document.addEventListener('DOMContentLoaded', () => {
-          // Only force top if the URL does NOT include an anchor (e.g., #contact)
-          if (!window.location.hash) {
-            window.scrollTo(0, 0);
-            setTimeout(() => window.scrollTo(0, 0), 10);
-          }
-        });
-    </script>
+  <footer class="site-footer">
+    <p>&copy; 2026 Aditya Shanghavi. All Rights Reserved.</p>
+  </footer>
 </body>
 </html>
