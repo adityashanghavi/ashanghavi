@@ -22,27 +22,18 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 1.5rem;
-      flex-wrap: wrap;
+      gap: 2rem;
+    }
+    
+    .project-title {
+      flex: 1;
+      margin: 0;
     }
     
     .project-logo {
-      height: 60px;
+      height: 80px;
       width: auto;
       object-fit: contain;
-    }
-    
-    /* Mobile responsiveness */
-    @media (max-width: 768px) {
-      .title-row {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-    
-      .project-logo {
-        height: 45px;
-        margin-top: 0.5rem;
-      }
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -267,6 +258,20 @@
       main{ padding-top: 2.5rem; }
       .logo-image{ height: 40px; }
     }
+
+    @media (max-width: 900px) {
+      .title-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    
+      .project-logo {
+        height: 55px;
+        margin-top: 0.75rem;
+      }
+    }
+    
+    
   </style>
 </head>
 
@@ -289,8 +294,10 @@
 
   <main>
     <div class="title-row">
-      <h1>Multimodal Fatigue Detection and Management System</h1>
-      <img src="Images/Logos/Neuroergo Logo.png" alt="Neuroergo Logo" class="project-logo">
+      <h1 class="project-title">
+        Multimodal Fatigue Detection and Management System
+      </h1>
+      <img src="Images/Logos/Nueuroergo Logo.png" alt="Neuroergo Logo" class="project-logo">
     </div>
     <h2>Research Scientist | Technical Project Lead</h2>
     <p class="subtitle">
