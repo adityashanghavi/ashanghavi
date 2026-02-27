@@ -469,7 +469,7 @@ footer,
   white-space: nowrap;
 }
 
-/* Hero split layout (text left, photo right) */
+/* Hero split layout */
 .resume-main .hero.hero-split{
   display: flex;
   align-items: center;
@@ -477,25 +477,20 @@ footer,
   gap: 2rem;
 }
 
-.resume-main .hero-content{
-  min-width: 0;
-  flex: 1;
-}
-
+/* Remove white background + padding */
 .resume-main .hero-photo{
-  background: #ffffff;
-  border-radius: 20px;
-  padding: 14px;
-  box-shadow: 0 14px 35px rgba(0,0,0,0.30);
+  flex: 0 0 auto;
 }
 
+/* Smaller image, no white padding */
 .resume-main .hero-photo img{
   display: block;
-  width: 260px;        /* smaller and cleaner */
-  max-width: 28vw;     /* responsive cap */
+  width: 220px;        /* smaller */
+  max-width: 24vw;     /* responsive */
   height: auto;
-  border-radius: 16px;
+  border-radius: 22px; /* smooth rounded corners */
   object-fit: cover;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.35); /* floating effect */
 }
 
 /* Responsive (index page only) */
@@ -513,6 +508,6 @@ footer,
 
   .resume-main .hero-photo img{
     width: 100%;
-    max-width: 520px;
+    max-width: 360px;
   }  
 }
