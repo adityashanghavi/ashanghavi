@@ -16,18 +16,23 @@ body {
   line-height: 1.6;
 }
 
-/* Global link styling */
+/* =========================
+   GLOBAL LINKS
+   All links: same color as surrounding text + always underlined
+   ========================= */
 a,
 a:visited,
 a:hover,
 a:active {
-  color: inherit;                 /* keeps surrounding text color */
-  text-decoration: underline;     /* always underlined */
+  color: inherit;
+  text-decoration: underline;
   text-underline-offset: 3px;
   text-decoration-thickness: 1px;
 }
 
-/* NAV */
+/* =========================
+   NAV
+   ========================= */
 nav{
   position: sticky;
   top: 0;
@@ -51,7 +56,7 @@ nav{
   display:flex;
   align-items:center;
   gap: 0.75rem;
-  text-decoration:none;
+  text-decoration:none; /* logo area should not look like a link */
   color: var(--color-text-dark);
   line-height: 1;
 }
@@ -76,7 +81,7 @@ nav{
 
 .nav-links a{
   color: var(--color-text-dark);
-  text-decoration: underline;     /* was none */
+  text-decoration: underline;
   font-size: 0.9rem;
   position: relative;
   padding: 0.35rem 0;
@@ -86,7 +91,9 @@ nav{
 
 .nav-links a:hover{ color: var(--color-primary); }
 
-/* PAGE */
+/* =========================
+   PAGE
+   ========================= */
 main{
   max-width: 1100px;
   margin: 0 auto;
@@ -119,7 +126,9 @@ h2{
   margin: 2.25rem 0 1rem;
 }
 
-/* HIGHLIGHTS */
+/* =========================
+   HIGHLIGHTS
+   ========================= */
 .highlights {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -155,7 +164,9 @@ h2{
   margin-top: 0.4rem;
 }
 
-/* CASE GRID */
+/* =========================
+   CASE GRID
+   ========================= */
 .case-grid{
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -187,7 +198,9 @@ h2{
   margin: 0.4rem 0;
 }
 
-/* PUBLICATION LIST */
+/* =========================
+   PUBLICATION LIST
+   ========================= */
 .pub-list{
   display: grid;
   gap: 1rem;
@@ -213,14 +226,14 @@ h2{
   color: var(--color-text-dark);
   font-size: 1.1rem;
   font-weight: 600;
-  text-decoration: none;
+  text-decoration: underline; /* keep consistent with global links */
   line-height: 1.3;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
 }
 
 .pub-title:hover{
   color: var(--color-primary);
-  text-decoration: underline;
-  text-underline-offset: 4px;
 }
 
 .pub-meta{
@@ -245,7 +258,9 @@ h2{
   border-radius: 999px;
 }
 
-/* FOOTER (covers both <footer> and <footer class="site-footer">) */
+/* =========================
+   FOOTER
+   ========================= */
 footer,
 .site-footer{
   border-top: 0.5px solid rgba(255,255,255,0.1);
@@ -256,7 +271,9 @@ footer,
   font-size: 0.9rem;
 }
 
-/* RESPONSIVE */
+/* =========================
+   RESPONSIVE (GLOBAL)
+   ========================= */
 @media (max-width: 900px){
   .case-grid{ grid-template-columns: 1fr; }
   .highlights{ grid-template-columns: 1fr; }
@@ -268,7 +285,9 @@ footer,
   .logo-image{ height: 40px; }
 }
 
-/* TITLE ROW (optional reusable pattern) */
+/* =========================
+   TITLE ROW (optional reusable pattern)
+   ========================= */
 .title-row {
   display: flex;
   align-items: center;
@@ -369,13 +388,7 @@ footer,
   margin-top: 1rem;
 }
 
-.resume-main .row-title a{
-  color: inherit;
-  text-decoration: underline;     /* was none */
-  text-underline-offset: 3px;
-  text-decoration-thickness: 1px;
-}
-
+/* Cards */
 .resume-main .card{
   background: rgba(255,255,255,0.03);
   border: 1px solid rgba(255,255,255,0.10);
@@ -421,7 +434,7 @@ footer,
   font-size: 0.95rem;
 }
 
-/* Two column lists (experience, education) */
+/* Rows (Experience, Education) */
 .resume-main .rows{
   display: grid;
   gap: 0.9rem;
@@ -455,9 +468,15 @@ footer,
   margin: 0;
 }
 
-.resume-main .row-title a{
+/* IMPORTANT: do NOT remove underline in titles (keeps titles underlined too) */
+.resume-main .row-title a,
+.resume-main .row-title a:visited,
+.resume-main .row-title a:hover,
+.resume-main .row-title a:active{
   color: inherit;
-  text-decoration: none;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
 }
 
 .resume-main .company-logo{
@@ -487,29 +506,27 @@ footer,
   gap: 2rem;
 }
 
-/* Remove white background + padding */
 .resume-main .hero-photo{
   flex: 0 0 auto;
 }
 
-/* Smaller image, no white padding */
 .resume-main .hero-photo img{
   display: block;
-  width: 220px;        /* smaller */
-  max-width: 24vw;     /* responsive */
+  width: 220px;
+  max-width: 24vw;
   height: auto;
-  border-radius: 22px; /* smooth rounded corners */
+  border-radius: 22px;
   object-fit: cover;
-  box-shadow: 0 18px 40px rgba(0,0,0,0.35); /* floating effect */
+  box-shadow: 0 18px 40px rgba(0,0,0,0.35);
 }
 
-/* Row meta links: keep same color, always underlined */
+/* Row meta links explicitly: same as text + underlined */
 .resume-main .row-meta a,
 .resume-main .row-meta a:visited,
 .resume-main .row-meta a:hover,
 .resume-main .row-meta a:active{
-  color: var(--color-text-dark);   /* stays light text */
-  text-decoration: underline;      /* always underlined */
+  color: inherit;
+  text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
 }
@@ -530,5 +547,5 @@ footer,
   .resume-main .hero-photo img{
     width: 100%;
     max-width: 360px;
-  }  
+  }
 }
