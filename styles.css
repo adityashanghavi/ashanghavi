@@ -30,6 +30,18 @@ a:active {
   text-decoration-thickness: 1px;
 }
 
+/* Remove underline inside project cards only */
+.resume-main .card-link,
+.resume-main .card-link:visited,
+.resume-main .card-link:hover,
+.resume-main .card-link:active {
+  text-decoration: none;
+}
+
+.resume-main .card-link * {
+  text-decoration: none !important;
+}
+
 /* =========================
    NAV
    ========================= */
