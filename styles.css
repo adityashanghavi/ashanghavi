@@ -397,22 +397,23 @@ footer,
    ========================= */
 
 .about-sections {
-  margin-top: 2rem;
+  margin-top: 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
+  gap: 1.25rem;
 }
 
 .about-block {
   max-width: 800px;
+  margin: 0 auto;   /* centers the block */
 }
 
 .about-heading {
-  font-size: 1.1rem;
-  letter-spacing: 0.12em;
+  font-size: 1.05rem;   /* slightly tighter */
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   font-weight: 600;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.35rem;
   display: flex;
   align-items: center;
   gap: 0.6rem;
