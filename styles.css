@@ -336,20 +336,21 @@ footer,
 }
 
 
-/* Mini Projects heading spacing */
-.resume-main #projects h3{
-  margin-top: 2.25rem;   /* space from the cards */
-  margin-bottom: 0.75rem; /* space before the bullet list */
-}
-
+/* Space between cards and Mini Projects */
 .resume-main #projects .mini-projects {
-  margin-top: 2rem;   /* increase to 2.5rem if you want more */
+  margin-top: 2rem;   /* controls gap above the heading */
 }
 
+/* Tight spacing between heading and bullet */
 .resume-main #projects .mini-projects h3 {
-  margin: 0 0 0.75rem;  /* give heading breathing room before bullets */
+  margin: 0 0 0.35rem;
   font-size: 1.15rem;
   font-weight: 600;
+}
+
+/* Remove extra top margin from bullet list */
+.resume-main #projects .mini-projects .project-bullets {
+  margin-top: 0;
 }
 
 /* =========================
