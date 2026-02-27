@@ -543,6 +543,41 @@ footer,
   text-underline-offset: 3px;
 }
 
+/* =========================
+   ABOUT CARDS
+   ========================= */
+
+.about-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.about-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 16px;
+  padding: 1.2rem;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.about-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.45);
+}
+
+.about-card h3 {
+  font-size: 1rem;
+  margin-bottom: 0.4rem;
+}
+
+.about-card p {
+  font-size: 0.95rem;
+  color: var(--color-text-body);
+}
+
 /* Responsive (index page only) */
 @media (max-width: 900px){
   .resume-main .grid{ grid-template-columns: 1fr; }
@@ -559,5 +594,9 @@ footer,
   .resume-main .hero-photo img{
     width: 100%;
     max-width: 360px;
+  }
+
+  .about-cards {
+    grid-template-columns: 1fr;
   }
 }
