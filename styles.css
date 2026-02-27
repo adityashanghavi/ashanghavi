@@ -68,7 +68,7 @@ nav{
   display:flex;
   align-items:center;
   gap: 0.75rem;
-  text-decoration:none; /* logo area should not look like a link */
+  text-decoration:none;
   color: var(--color-text-dark);
   line-height: 1;
 }
@@ -238,7 +238,7 @@ h2{
   color: var(--color-text-dark);
   font-size: 1.1rem;
   font-weight: 600;
-  text-decoration: underline; /* keep consistent with global links */
+  text-decoration: underline;
   line-height: 1.3;
   text-underline-offset: 3px;
   text-decoration-thickness: 1px;
@@ -340,26 +340,45 @@ footer,
   padding: 5.5rem 5% 4rem;
 }
 
-/* Hero (index page) */
-.resume-main .hero{
-  padding-top: 1.5rem;
+/* =========================
+   HERO (CENTERED)
+   Use <header class="hero hero-centered">
+   ========================= */
+.resume-main .hero.hero-centered{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: 2rem;
   padding-bottom: 2.5rem;
   border-bottom: 1px solid rgba(255,255,255,0.08);
-  text-align: left;
 }
 
-.resume-main .hero h1{
-  font-size: 3.2rem;
-  letter-spacing: -1.6px;
-  margin-bottom: 0.75rem;
+.resume-main .hero.hero-centered .hero-photo{
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
-.resume-main .hero-subtitle{
+.resume-main .hero.hero-centered .hero-photo img{
+  width: 240px;
+  max-width: 90%;
+  height: auto;
+  border-radius: 26px;
+  object-fit: cover;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+  margin-bottom: 1.25rem;
+}
+
+.resume-main .hero.hero-centered .hero-subtitle{
+  max-width: 850px;
+  margin: 0 auto;
+  font-size: 1.05rem;
   color: var(--color-text-body);
-  font-size: 1.1rem;
-  max-width: 900px;
+  line-height: 1.6;
 }
 
+/* Hero actions */
 .resume-main .hero-actions{
   margin-top: 1.5rem;
   display: flex;
@@ -373,7 +392,7 @@ footer,
 
 /* Section blocks */
 .resume-main .section{
-  padding: 2.5rem 0;
+  padding: 2.25rem 0;
   border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
@@ -395,21 +414,20 @@ footer,
 /* =========================
    EDITORIAL ABOUT SECTIONS
    ========================= */
-
 .about-sections {
-  margin-top: 1.5rem;
+  margin-top: 1.25rem;
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 1.0rem; /* reduced spacing */
 }
 
 .about-block {
   max-width: 800px;
-  margin: 0 auto;   /* centers the block */
+  margin: 0 auto;
 }
 
 .about-heading {
-  font-size: 1.05rem;   /* slightly tighter */
+  font-size: 1.05rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   font-weight: 600;
@@ -430,7 +448,9 @@ footer,
   line-height: 1.6;
 }
 
-/* Projects grid */
+/* =========================
+   PROJECTS GRID
+   ========================= */
 .resume-main .grid{
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -484,7 +504,9 @@ footer,
   font-size: 0.95rem;
 }
 
-/* Rows (Experience, Education) */
+/* =========================
+   ROWS (Experience, Education)
+   ========================= */
 .resume-main .rows{
   display: grid;
   gap: 0.9rem;
@@ -497,6 +519,7 @@ footer,
   gap: 1rem;
   padding: 0.9rem 0;
   border-bottom: 1px solid rgba(255,255,255,0.08);
+  align-items: flex-start;
 }
 
 .resume-main .row:last-child{
@@ -518,7 +541,7 @@ footer,
   margin: 0;
 }
 
-/* IMPORTANT: do NOT remove underline in titles (keeps titles underlined too) */
+/* Keep underline in title links */
 .resume-main .row-title a,
 .resume-main .row-title a:visited,
 .resume-main .row-title a:hover,
@@ -548,20 +571,6 @@ footer,
   white-space: nowrap;
 }
 
-.resume-main .hero-photo{
-  flex: 0 0 auto;
-}
-
-.resume-main .hero-photo img{
-  display: block;
-  width: 220px;
-  max-width: 24vw;
-  height: auto;
-  border-radius: 22px;
-  object-fit: cover;
-  box-shadow: 0 18px 40px rgba(0,0,0,0.35);
-}
-
 /* Row meta links explicitly: same as text + underlined */
 .resume-main .row-meta a,
 .resume-main .row-meta a:visited,
@@ -574,40 +583,8 @@ footer,
 }
 
 /* =========================
-   CENTERED HERO
+   MINIMAL ABOUT CARDS (optional)
    ========================= */
-
-.resume-main .hero.hero-centered {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding-top: 2rem;
-  padding-bottom: 2.5rem;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-}
-
-.resume-main .hero-photo img {
-  width: 240px;        /* balanced size */
-  max-width: 30vw;
-  height: auto;
-  border-radius: 26px;
-  object-fit: cover;
-  box-shadow: 0 18px 40px rgba(0,0,0,0.35);
-  margin-bottom: 1.5rem;
-}
-
-.resume-main .hero-subtitle {
-  max-width: 850px;
-  font-size: 1.05rem;
-  color: var(--color-text-body);
-  line-height: 1.6;
-}
-
-/* =========================
-   MINIMAL ABOUT CARDS
-   ========================= */
-
 .about-cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -641,19 +618,27 @@ footer,
   padding-right: 2rem;
 }
 
-/* Responsive (index page only) */
+/* =========================
+   RESPONSIVE (INDEX PAGE)
+   ========================= */
 @media (max-width: 900px){
   .resume-main .grid{ grid-template-columns: 1fr; }
-  .resume-main .hero h1{ font-size: 2.4rem; }
   .resume-main{ padding-top: 4.25rem; }
   .resume-main .row{ flex-direction: column; }
   .resume-main .row-right{ white-space: normal; }
 
-  .resume-main .hero-photo img {
+  .resume-main .hero.hero-centered .hero-photo img{
     width: 200px;
   }
 
-  .about-cards {
+  .about-cards{
     grid-template-columns: 1fr;
+  }
+
+  .about-card:not(:last-child){
+    border-right: none;
+    padding-right: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding-bottom: 1.25rem;
   }
 }
