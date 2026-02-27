@@ -392,6 +392,43 @@ footer,
   max-width: 920px;
 }
 
+/* =========================
+   EDITORIAL ABOUT SECTIONS
+   ========================= */
+
+.about-sections {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.about-block {
+  max-width: 800px;
+}
+
+.about-heading {
+  font-size: 1.1rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.about-icon {
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+.about-body {
+  font-size: 0.95rem;
+  color: var(--color-text-body);
+  line-height: 1.6;
+}
+
 /* Projects grid */
 .resume-main .grid{
   display: grid;
