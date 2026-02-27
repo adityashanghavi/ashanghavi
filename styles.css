@@ -358,7 +358,7 @@ footer,
   text-decoration-thickness: 1px;
 }
 
-/* RESTORED fixed logo sizing */
+/*  logo sizing */
 .resume-main .company-logo{
   height: 42px !important;
   width: 42px !important;
@@ -422,6 +422,18 @@ footer,
   color: var(--color-text-body);
   font-size: 0.92rem;
   white-space: nowrap;
+}
+
+/* =========================
+   CONTACT
+   ========================= */
+.btn-icon{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+  opacity: 0.9;
 }
 
 /* =========================
