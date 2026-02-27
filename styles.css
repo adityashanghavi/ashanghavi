@@ -93,12 +93,17 @@ nav{
 
 .nav-links a{
   color: var(--color-text-dark);
-  text-decoration: underline;
+  text-decoration: none;          /* <-- remove underline */
   font-size: 0.9rem;
   position: relative;
   padding: 0.35rem 0;
-  text-underline-offset: 3px;
-  text-decoration-thickness: 1px;
+}
+
+.nav-links a,
+.nav-links a:visited,
+.nav-links a:hover,
+.nav-links a:active{
+  text-decoration: none;
 }
 
 .nav-links a:hover{ color: var(--color-primary); }
