@@ -125,151 +125,6 @@ h2{
   margin: 0.25rem 0 1rem;
 }
 
-.subtitle{
-  color: var(--color-text-body);
-  font-size: 1.1rem;
-  max-width: 850px;
-  margin-bottom: 2.5rem;
-}
-
-.section-title{
-  font-size: 1.5rem;
-  letter-spacing: -0.5px;
-  margin: 2.25rem 0 1rem;
-}
-
-/* =========================
-   HIGHLIGHTS
-   ========================= */
-.highlights {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  margin: 1.5rem 0 2.5rem;
-}
-
-.highlight-card {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.10);
-  border-radius: 16px;
-  padding: 1.1rem;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
-  text-align: left;
-}
-
-.highlight-kicker {
-  color: var(--color-text-body);
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  margin-bottom: 0.35rem;
-}
-
-.highlight-value {
-  font-size: 1.05rem;
-  font-weight: 600;
-  line-height: 1.25;
-}
-
-.highlight-note {
-  color: var(--color-text-body);
-  font-size: 0.95rem;
-  margin-top: 0.4rem;
-}
-
-/* =========================
-   CASE GRID
-   ========================= */
-.case-grid{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  margin: 0.75rem 0 2.5rem;
-}
-
-.case-card{
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.10);
-  border-radius: 16px;
-  padding: 1.25rem;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
-  text-align: left;
-}
-
-.case-card h3{
-  font-size: 1.1rem;
-  margin-bottom: 0.5rem;
-}
-
-.case-card ul{
-  margin-left: 1.1rem;
-  color: var(--color-text-body);
-  font-size: 0.98rem;
-}
-
-.case-card li{
-  margin: 0.4rem 0;
-}
-
-/* =========================
-   PUBLICATION LIST
-   ========================= */
-.pub-list{
-  display: grid;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.pub-card{
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.10);
-  border-radius: 16px;
-  padding: 1.25rem 1.25rem;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.35);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.pub-card:hover{
-  transform: translateY(-2px);
-  box-shadow: 0 10px 28px rgba(0,0,0,0.5);
-}
-
-.pub-title{
-  display: inline-block;
-  color: var(--color-text-dark);
-  font-size: 1.1rem;
-  font-weight: 600;
-  text-decoration: underline;
-  line-height: 1.3;
-  text-underline-offset: 3px;
-  text-decoration-thickness: 1px;
-}
-
-.pub-title:hover{
-  color: var(--color-primary);
-}
-
-.pub-meta{
-  margin-top: 0.35rem;
-  color: var(--color-text-body);
-  font-size: 0.95rem;
-}
-
-.pub-tags{
-  margin-top: 0.75rem;
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
-
-.tag{
-  font-size: 0.85rem;
-  color: var(--color-text-dark);
-  border: 1px solid rgba(232,144,190,0.35);
-  background: rgba(232,144,190,0.08);
-  padding: 0.25rem 0.6rem;
-  border-radius: 999px;
-}
-
 /* =========================
    FOOTER
    ========================= */
@@ -286,11 +141,6 @@ footer,
 /* =========================
    RESPONSIVE (GLOBAL)
    ========================= */
-@media (max-width: 900px){
-  .case-grid{ grid-template-columns: 1fr; }
-  .highlights{ grid-template-columns: 1fr; }
-}
-
 @media (max-width: 768px){
   h1{ font-size: 2.2rem; }
   main{ padding-top: 2.5rem; }
@@ -298,42 +148,8 @@ footer,
 }
 
 /* =========================
-   TITLE ROW (optional reusable pattern)
-   ========================= */
-.title-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
-}
-
-.project-title {
-  flex: 1;
-  margin: 0;
-}
-
-.project-logo {
-  height: 80px;
-  width: auto;
-  object-fit: contain;
-}
-
-@media (max-width: 900px) {
-  .title-row {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .project-logo {
-    height: 55px;
-    margin-top: 0.75rem;
-  }
-}
-
-/* =========================
    INDEX RESUME PAGE
    ========================= */
-
 .resume-main{
   max-width: 1100px;
   margin: 0 auto;
@@ -378,25 +194,9 @@ footer,
   line-height: 1.6;
 }
 
-/* Hero actions */
-.resume-main .hero-actions{
-  margin-top: 1.5rem;
-  display: flex;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-}
-
-.resume-main .hero-actions-tight{
-  margin-top: 1rem;
-}
-
 /* Section blocks */
 .resume-main .section{
   padding: 2.25rem 0;
-}
-
-.resume-main .section:last-child{
-  border-bottom: none;
 }
 
 .resume-main .section h2{
@@ -411,25 +211,19 @@ footer,
 }
 
 /* =========================
-   ABOUT ME (stacked rows, consistent left alignment)
+   ABOUT ME (stacked rows)
    ========================= */
-
 .about-sections{
   margin-top: 1.25rem;
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
-
-  /* force left alignment */
   align-items: flex-start;
 }
 
 .about-block{
-  /* remove centering that causes “indent” look */
   margin: 0;
   padding: 0;
-
-  /* keep a readable line length but still left aligned */
   width: 100%;
   max-width: 920px;
 }
@@ -440,17 +234,14 @@ footer,
   text-transform: uppercase;
   font-weight: 600;
   margin-bottom: 0.35rem;
-
   display: flex;
   align-items: center;
   gap: 0.6rem;
-
-  /* prevents icon/label wrapping weirdly */
   white-space: nowrap;
 }
 
 .about-icon{
-  width: 1.25rem;         /* gives every row the same icon “column” */
+  width: 1.25rem;
   display: inline-flex;
   justify-content: center;
   opacity: 0.85;
@@ -459,7 +250,8 @@ footer,
 .about-body{
   font-size: 0.95rem;
   color: var(--color-text-body);
-  line-height: 
+  line-height: 1.6;     /* FIXED */
+}
 
 /* =========================
    PROJECTS GRID
@@ -471,7 +263,6 @@ footer,
   margin-top: 1rem;
 }
 
-/* Cards */
 .resume-main .card{
   background: rgba(255,255,255,0.03);
   border: 1px solid rgba(255,255,255,0.10);
@@ -519,10 +310,11 @@ footer,
 
 /* =========================
    ROWS (Experience, Education)
+   Remove horizontal lines between entries
    ========================= */
 .resume-main .rows{
   display: grid;
-  gap: 0.9rem;
+  gap: 1.1rem;
   margin-top: 1rem;
 }
 
@@ -530,12 +322,9 @@ footer,
   display: flex;
   justify-content: space-between;
   gap: 1rem;
-  padding: 1.1rem 0;   /* slightly more breathing room */
+  padding: 0.5rem 0;      /* tighter */
   align-items: flex-start;
-}
-
-.resume-main .row:last-child{
-  border-bottom: none;
+  border-bottom: none;    /* remove lines */
 }
 
 .resume-main .row-left{
@@ -564,14 +353,15 @@ footer,
   text-decoration-thickness: 1px;
 }
 
+/* RESTORED fixed logo sizing */
 .resume-main .company-logo{
-  height: 42px;
-  width: 42px;
-  min-width: 42px;      /* prevents stretching */
+  height: 42px !important;
+  width: 42px !important;
+  min-width: 42px;
   max-width: 42px;
   object-fit: contain;
   border-radius: 8px;
-  flex-shrink: 0;       /* prevents flex resizing */
+  flex: 0 0 42px;
 }
 
 .resume-main .row-meta{
@@ -598,42 +388,6 @@ footer,
 }
 
 /* =========================
-   MINIMAL ABOUT CARDS (optional)
-   ========================= */
-.about-cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  margin-top: 1.75rem;
-}
-
-.about-card {
-  padding: 0;
-  background: none;
-  border: none;
-  box-shadow: none;
-}
-
-.about-card h3 {
-  font-size: 0.9rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-text-body);
-  margin-bottom: 0.5rem;
-}
-
-.about-card p {
-  font-size: 0.95rem;
-  color: var(--color-text-dark);
-  line-height: 1.5;
-}
-
-.about-card:not(:last-child) {
-  border-right: 1px solid rgba(255,255,255,0.08);
-  padding-right: 2rem;
-}
-
-/* =========================
    RESPONSIVE (INDEX PAGE)
    ========================= */
 @media (max-width: 900px){
@@ -644,16 +398,5 @@ footer,
 
   .resume-main .hero.hero-centered .hero-photo img{
     width: 200px;
-  }
-
-  .about-cards{
-    grid-template-columns: 1fr;
-  }
-
-  .about-card:not(:last-child){
-    border-right: none;
-    padding-right: 0;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-    padding-bottom: 1.25rem;
   }
 }
