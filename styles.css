@@ -412,41 +412,55 @@ footer,
 }
 
 /* =========================
-   EDITORIAL ABOUT SECTIONS
+   ABOUT ME (stacked rows, consistent left alignment)
    ========================= */
-.about-sections {
+
+.about-sections{
   margin-top: 1.25rem;
   display: flex;
   flex-direction: column;
-  gap: 1.0rem; /* reduced spacing */
+  gap: 1.25rem;
+
+  /* force left alignment */
+  align-items: flex-start;
 }
 
-.about-block {
-  max-width: 800px;
-  margin: 0 auto;
+.about-block{
+  /* remove centering that causes “indent” look */
+  margin: 0;
+  padding: 0;
+
+  /* keep a readable line length but still left aligned */
+  width: 100%;
+  max-width: 920px;
 }
 
-.about-heading {
+.about-heading{
   font-size: 1.05rem;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.10em;
   text-transform: uppercase;
   font-weight: 600;
   margin-bottom: 0.35rem;
+
   display: flex;
   align-items: center;
   gap: 0.6rem;
+
+  /* prevents icon/label wrapping weirdly */
+  white-space: nowrap;
 }
 
-.about-icon {
-  font-size: 1rem;
-  opacity: 0.8;
+.about-icon{
+  width: 1.25rem;         /* gives every row the same icon “column” */
+  display: inline-flex;
+  justify-content: center;
+  opacity: 0.85;
 }
 
-.about-body {
+.about-body{
   font-size: 0.95rem;
   color: var(--color-text-body);
-  line-height: 1.6;
-}
+  line-height: 
 
 /* =========================
    PROJECTS GRID
@@ -517,8 +531,7 @@ footer,
   display: flex;
   justify-content: space-between;
   gap: 1rem;
-  padding: 0.9rem 0;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  padding: 1.1rem 0;   /* slightly more breathing room */
   align-items: flex-start;
 }
 
