@@ -199,6 +199,11 @@ footer,
   padding: 2.25rem 0;
 }
 
+/* Add divider BEFORE every section except the first one */
+.resume-main .section + .section {
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
 .resume-main .section h2{
   font-size: 1.35rem;
   letter-spacing: -0.4px;
