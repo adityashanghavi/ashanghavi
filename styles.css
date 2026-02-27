@@ -548,14 +548,6 @@ footer,
   white-space: nowrap;
 }
 
-/* Hero split layout */
-.resume-main .hero.hero-split{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
-}
-
 .resume-main .hero-photo{
   flex: 0 0 auto;
 }
@@ -579,6 +571,37 @@ footer,
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
+}
+
+/* =========================
+   CENTERED HERO
+   ========================= */
+
+.resume-main .hero.hero-centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: 2rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.resume-main .hero-photo img {
+  width: 240px;        /* balanced size */
+  max-width: 30vw;
+  height: auto;
+  border-radius: 26px;
+  object-fit: cover;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+  margin-bottom: 1.5rem;
+}
+
+.resume-main .hero-subtitle {
+  max-width: 850px;
+  font-size: 1.05rem;
+  color: var(--color-text-body);
+  line-height: 1.6;
 }
 
 /* =========================
@@ -626,14 +649,8 @@ footer,
   .resume-main .row{ flex-direction: column; }
   .resume-main .row-right{ white-space: normal; }
 
-  .resume-main .hero.hero-split{
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .resume-main .hero-photo img{
-    width: 100%;
-    max-width: 360px;
+  .resume-main .hero-photo img {
+    width: 200px;
   }
 
   .about-cards {
