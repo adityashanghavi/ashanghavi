@@ -7,238 +7,6 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Style+Script&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
-
-  <style>
-    /* Page specific layout on top of styles.css */
-
-    /* Make the page feel “resume-like” */
-    main{
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 5.5rem 5% 4rem;
-    }
-
-    /* Hero */
-    .hero{
-      padding-top: 1.5rem;
-      padding-bottom: 2.5rem;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      text-align: left;
-    }
-
-    .hero h1{
-      font-size: 3.2rem;
-      letter-spacing: -1.6px;
-      margin-bottom: 0.75rem;
-    }
-
-    .hero-subtitle{
-      color: var(--color-text-body);
-      font-size: 1.1rem;
-      max-width: 900px;
-    }
-
-    .hero-actions{
-      margin-top: 1.5rem;
-      display: flex;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-    }
-
-    .btn{
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.7rem 1.1rem;
-      border-radius: 999px;
-      text-decoration: none;
-      font-size: 0.95rem;
-      border: 1px solid rgba(232,144,190,0.35);
-      background: rgba(232,144,190,0.08);
-      color: var(--color-text-dark);
-      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-    }
-
-    .btn:hover{
-      transform: translateY(-2px);
-      box-shadow: 0 10px 28px rgba(0,0,0,0.35);
-      background: rgba(232,144,190,0.14);
-    }
-
-    .btn-primary{
-      background: var(--color-primary);
-      color: var(--color-background-main);
-      border: 1px solid rgba(232,144,190,0.5);
-    }
-
-    .btn-primary:hover{
-      background: #e0609d;
-    }
-
-    /* Section blocks */
-    .section{
-      padding: 2.5rem 0;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .section:last-child{
-      border-bottom: none;
-    }
-
-    .section h2{
-      font-size: 1.35rem;
-      letter-spacing: -0.4px;
-      margin-bottom: 0.75rem;
-    }
-
-    .section p{
-      color: var(--color-text-body);
-      max-width: 920px;
-    }
-
-    /* Projects grid */
-    .grid{
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-
-    .card-link{
-      display: block;
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .card{
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.10);
-      border-radius: 16px;
-      padding: 1.1rem;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-      height: 100%;
-    }
-
-    .card:hover{
-      transform: translateY(-2px);
-      box-shadow: 0 10px 28px rgba(0,0,0,0.45);
-    }
-
-    .card-title{
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 0.75rem;
-      margin-bottom: 0.35rem;
-    }
-
-    .card-title h3{
-      font-size: 1.05rem;
-      letter-spacing: -0.3px;
-      margin: 0;
-    }
-
-    .chip{
-      font-size: 0.8rem;
-      color: var(--color-text-dark);
-      border: 1px solid rgba(232,144,190,0.35);
-      background: rgba(232,144,190,0.08);
-      padding: 0.2rem 0.55rem;
-      border-radius: 999px;
-      white-space: nowrap;
-    }
-
-    .card p{
-      margin: 0.4rem 0 0;
-      color: var(--color-text-body);
-      font-size: 0.95rem;
-    }
-
-    /* Two column lists (experience, education) */
-    .rows{
-      display: grid;
-      gap: 0.9rem;
-      margin-top: 1rem;
-    }
-
-    .row{
-      display: flex;
-      justify-content: space-between;
-      gap: 1rem;
-      padding: 0.9rem 0;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .row:last-child{
-      border-bottom: none;
-    }
-
-    .row-left{
-      min-width: 0;
-    }
-
-    .row-title{
-      font-size: 1rem;
-      margin: 0;
-    }
-
-    .row-meta{
-      margin-top: 0.2rem;
-      color: var(--color-text-body);
-      font-size: 0.92rem;
-    }
-
-    .row-right{
-      color: var(--color-text-body);
-      font-size: 0.92rem;
-      white-space: nowrap;
-    }
-
-    .row-title {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-    .company-logo {
-      height: 32px;   /* Adjust size */
-      width: auto;
-    }
-    
-    .row-title p {
-      margin: 0;
-    }
-    
-    .row-title a {
-      color: inherit;
-      text-decoration: none;
-    }
-    
-    .row-title a:hover {
-      text-decoration: underline;
-    }
-
-    /* Footer */
-    .site-footer{
-      margin-top: 2.5rem;
-      color: var(--color-text-body);
-      font-size: 0.9rem;
-      text-align: center;
-      padding: 2.5rem 5%;
-      border-top: 0.5px solid rgba(255,255,255,0.1);
-      background: var(--color-background-secondary);
-    }
-
-    /* Responsive */
-    @media (max-width: 900px){
-      .grid{ grid-template-columns: 1fr; }
-      .hero h1{ font-size: 2.4rem; }
-      main{ padding-top: 4.25rem; }
-      .row{ flex-direction: column; }
-      .row-right{ white-space: normal; }
-    }
-  </style>
 </head>
 
 <body>
@@ -259,7 +27,7 @@
     </div>
   </nav>
 
-  <main>
+  <main class="resume-main">
     <!-- HERO -->
     <header class="hero">
       <h1>Engineering Human Centered Intelligence</h1>
@@ -341,37 +109,56 @@
     <section id="experience" class="section">
       <h2>Experience</h2>
 
-      <div class="row">
-        <div class="row-left">
-          <div class="row-title">
-            <img src="Images/Logos/Neuroergo Logo.png"
-                 alt="NeuroErgonomics Labs Logo"
-                 class="company-logo">
-      
-            <p>
-              <strong>Research Scientist</strong>, 
-              <a href="https://neuroergonomics.engr.wisc.edu/" 
-                 target="_blank" 
-                 rel="noopener noreferrer">
-                 NeuroErgonomics Labs
-              </a>
-            </p>
-          </div>
-      
-          <div class="row-meta">
-            Multimodal fatigue detection, AI enabled VR training, physiological signal modeling
-          </div>
-      
-        </div>
-      
-        <div class="row-right">2024 - Present</div>
-      </div>
-
+      <div class="rows">
+        <!-- NeuroErgo -->
         <div class="row">
           <div class="row-left">
-            <p class="row-title"><strong>Project Lead</strong>, US Medical Innovations</p>
-            <div class="row-meta">Surgical robotics and energy devices, standards and design controls, patents</div>
+            <div class="row-title">
+              <img src="Images/Logos/neuroergo-logo.png"
+                   alt="NeuroErgonomics Labs Logo"
+                   class="company-logo">
+
+              <p>
+                <strong>Research Scientist</strong>,
+                <a href="https://neuroergonomics.engr.wisc.edu/"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                  NeuroErgonomics Labs
+                </a>
+              </p>
+            </div>
+
+            <div class="row-meta">
+              Multimodal fatigue detection, AI enabled VR training, physiological signal modeling
+            </div>
           </div>
+
+          <div class="row-right">2024 - Present</div>
+        </div>
+
+        <!-- USMI -->
+        <div class="row">
+          <div class="row-left">
+            <div class="row-title">
+              <img src="Images/Logos/USMI Logo.png"
+                   alt="US Medical Innovations Logo"
+                   class="company-logo">
+
+              <p>
+                <strong>Project Lead</strong>,
+                <a href="https://usmedicalinnovations.com/"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                  US Medical Innovations
+                </a>
+              </p>
+            </div>
+
+            <div class="row-meta">
+              Surgical robotics and energy devices, standards and design controls, patents
+            </div>
+          </div>
+
           <div class="row-right">2016 - 2019</div>
         </div>
       </div>
@@ -384,17 +171,51 @@
       <div class="rows">
         <div class="row">
           <div class="row-left">
-            <p class="row-title"><strong>PhD, Biomedical Engineering</strong>, Purdue University</p>
-            <div class="row-meta">Wearable sensing and machine learning for Parkinson’s disease assessment</div>
+            <div class="row-title">
+              <img src="Images/Logos/Purdue Logo.png"
+                   alt="Purdue University Logo"
+                   class="company-logo">
+
+              <p>
+                <strong>PhD, Biomedical Engineering</strong>,
+                <a href="https://engineering.purdue.edu/BME"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                  Purdue University
+                </a>
+              </p>
+            </div>
+
+            <div class="row-meta">
+              Wearable sensing and machine learning for Parkinson’s disease assessment
+            </div>
           </div>
-          <div class="row-right">2024 to 2026</div>
+
+          <div class="row-right">2024 - 2026</div>
         </div>
 
         <div class="row">
           <div class="row-left">
-            <p class="row-title"><strong>MS, Biomedical Engineering</strong>, Purdue University</p>
-            <div class="row-meta">Augmented reality systems for surgical telementoring</div>
+            <div class="row-title">
+              <img src="Images/Logos/Purdue Logo.png"
+                   alt="Purdue University Logo"
+                   class="company-logo">
+
+              <p>
+                <strong>MS, Biomedical Engineering</strong>,
+                <a href="https://engineering.purdue.edu/BME"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                  Purdue University
+                </a>
+              </p>
+            </div>
+
+            <div class="row-meta">
+              Augmented reality systems for surgical telementoring
+            </div>
           </div>
+
           <div class="row-right">Earlier</div>
         </div>
       </div>
@@ -407,7 +228,7 @@
         Interested in collaboration, consulting, or research partnerships.
       </p>
 
-      <div class="hero-actions" style="margin-top: 1rem;">
+      <div class="hero-actions hero-actions-tight">
         <a class="btn btn-primary" href="mailto:adityashanghavi@gmail.com">Email</a>
         <a class="btn" href="https://www.linkedin.com/in/ashanghavi/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       </div>
