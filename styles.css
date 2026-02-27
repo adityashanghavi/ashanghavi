@@ -338,7 +338,7 @@ footer,
 
 /* Space between cards and Mini Projects */
 .resume-main #projects .mini-projects {
-  margin-top: 2rem;   /* controls gap above the heading */
+  margin-top: 1.25rem;   /* controls gap above the heading */
 }
 
 /* Tight spacing between heading and bullet */
