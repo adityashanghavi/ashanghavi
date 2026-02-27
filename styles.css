@@ -567,8 +567,11 @@ footer,
 .resume-main .company-logo{
   height: 42px;
   width: 42px;
+  min-width: 42px;      /* prevents stretching */
+  max-width: 42px;
   object-fit: contain;
   border-radius: 8px;
+  flex-shrink: 0;       /* prevents flex resizing */
 }
 
 .resume-main .row-meta{
