@@ -493,6 +493,17 @@ footer,
   box-shadow: 0 18px 40px rgba(0,0,0,0.35); /* floating effect */
 }
 
+/* Row meta links: keep same color, always underlined */
+.resume-main .row-meta a,
+.resume-main .row-meta a:visited,
+.resume-main .row-meta a:hover,
+.resume-main .row-meta a:active{
+  color: var(--color-text-dark);   /* stays light text */
+  text-decoration: underline;      /* always underlined */
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
 /* Responsive (index page only) */
 @media (max-width: 900px){
   .resume-main .grid{ grid-template-columns: 1fr; }
