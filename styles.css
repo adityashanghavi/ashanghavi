@@ -259,7 +259,7 @@ footer,
 }
 
 /* =========================
-   PROJECTS GRID
+   PROJECTS
    ========================= */
 .resume-main .grid{
   display: grid;
@@ -333,6 +333,12 @@ footer,
   left: -18px;
   color: var(--color-primary);
   font-size: 1.2rem;
+}
+
+/* Mini Projects heading spacing */
+.resume-main #projects h3{
+  margin-top: 2.25rem;   /* space from the cards */
+  margin-bottom: 0.75rem; /* space before the bullet list */
 }
 
 /* =========================
