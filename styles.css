@@ -393,7 +393,6 @@ footer,
 /* Section blocks */
 .resume-main .section{
   padding: 2.25rem 0;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
 .resume-main .section:last-child{
