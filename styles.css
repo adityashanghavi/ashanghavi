@@ -722,6 +722,23 @@ footer,
   padding: 0.2rem 0.65rem;
 }
 
+/* PVT side-by-side screenshots */
+.pvt-screenshots {
+  display: flex;
+  gap: 1rem;
+  max-width: 860px;
+  margin: 0 auto 2.5rem;
+}
+
+.pvt-screenshots img {
+  flex: 1;
+  width: 50%;
+  height: auto;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.45);
+}
+
 /* Project screenshot / app preview */
 .project-screenshot {
   width: 100%;
@@ -754,4 +771,46 @@ footer,
   .resume-main .hero.hero-centered .hero-photo img{
     width: 200px;
   }
+}
+
+/* =========================
+   MOBILE (≤ 640px)
+   ========================= */
+@media (max-width: 640px) {
+  /* Nav: stack logo above horizontally-scrollable links */
+  .nav-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+  }
+  .nav-links {
+    width: 100%;
+    gap: 1rem;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding-bottom: 3px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .nav-links a { font-size: 0.82rem; white-space: nowrap; }
+
+  /* Smaller heading on phones */
+  h1 { font-size: 1.8rem; letter-spacing: -0.8px; }
+
+  /* Publications: wrap year below title */
+  .pub-mini li {
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  /* PVT screenshots: stack vertically */
+  .pvt-screenshots {
+    flex-direction: column;
+    max-width: 500px;
+  }
+  .pvt-screenshots img { width: 100%; }
+
+  /* Tighten index page padding */
+  .resume-main { padding-left: 4%; padding-right: 4%; }
+  main { padding-left: 4%; padding-right: 4%; }
 }
