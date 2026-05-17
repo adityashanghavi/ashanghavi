@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MedAssist | Aditya Shanghavi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Style+Script&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <nav>
+    <div class="nav-content">
+      <a class="logo-link" href="index.html">
+        <span class="full-name">Aditya Shanghavi</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#experience">Experience</a></li>
+        <li><a href="index.html#education">Education</a></li>
+        <li><a href="index.html#projects">Projects</a></li>
+        <li><a href="index.html#patents">Patents</a></li>
+        <li><a href="Resume_AdityaShanghavi.pdf" target="_blank" rel="noopener noreferrer">CV</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <h1>MedAssist</h1>
+    <h2>Personal Project</h2>
+    <p class="subtitle">
+      A full-stack, domain-constrained AI medical assistant that integrates the Claude API with a retrieval-augmented generation pipeline to produce evidence-grounded responses backed by PubMed literature.
+    </p>
+
+    <div class="highlights">
+      <div class="highlight-card">
+        <div class="highlight-kicker">System</div>
+        <div class="highlight-value">Full-stack AI medical assistant</div>
+        <div class="highlight-note">Domain-constrained to reduce hallucination risk</div>
+      </div>
+
+      <div class="highlight-card">
+        <div class="highlight-kicker">Evidence source</div>
+        <div class="highlight-value">PubMed literature</div>
+        <div class="highlight-note">RAG pipeline retrieves peer-reviewed research to ground each response</div>
+      </div>
+
+      <div class="highlight-card">
+        <div class="highlight-kicker">Model</div>
+        <div class="highlight-value">Claude API + RAG</div>
+        <div class="highlight-note">Citations surfaced alongside every generated answer</div>
+      </div>
+    </div>
+
+    <div class="case-grid">
+      <div class="case-card">
+        <h3>The problem</h3>
+        <div class="case-item">General-purpose LLMs hallucinate medical information at unsafe rates</div>
+        <div class="case-item">Responses lack citations, making them unverifiable in clinical contexts</div>
+        <div class="case-item">Accessing relevant biomedical literature is slow and requires expertise</div>
+      </div>
+
+      <div class="case-card">
+        <h3>Approach</h3>
+        <div class="case-item">Constrain generation to domain-relevant PubMed sources</div>
+        <div class="case-item">Retrieve supporting literature before generating a response</div>
+        <div class="case-item">Surface citations so users can verify claims directly</div>
+      </div>
+
+      <div class="case-card">
+        <h3>Technical build</h3>
+        <div class="case-item">Claude API for natural language generation and reasoning</div>
+        <div class="case-item">Vector search over an indexed PubMed corpus</div>
+        <div class="case-item">Full-stack web application deployed on Vercel</div>
+      </div>
+
+      <div class="case-card">
+        <h3>Why it matters</h3>
+        <div class="case-item">Demonstrates responsible AI design in a high-stakes domain</div>
+        <div class="case-item">Makes peer-reviewed medical knowledge more accessible</div>
+        <div class="case-item">Reduces hallucination risk through retrieval grounding</div>
+      </div>
+    </div>
+
+    <h2 class="section-title">Technology stack</h2>
+    <div class="tech-tags">
+      <span class="tech-tag">Claude API</span>
+      <span class="tech-tag">Retrieval-Augmented Generation</span>
+      <span class="tech-tag">PubMed</span>
+      <span class="tech-tag">Vector Search</span>
+      <span class="tech-tag">Full-Stack Web</span>
+      <span class="tech-tag">Vercel</span>
+    </div>
+
+    <h2 class="section-title">Try it</h2>
+    <p class="subtitle">
+      Live at
+      <a href="https://medassist-as.vercel.app/" target="_blank" rel="noopener noreferrer">
+        medassist-as.vercel.app
+      </a>
+    </p>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Aditya Shanghavi. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>
