@@ -725,7 +725,7 @@ footer,
 /* Project screenshot / app preview */
 .project-screenshot {
   width: 100%;
-  max-width: 860px;
+  max-width: 660px;
   height: auto;
   display: block;
   margin: 0 auto 2.5rem;
